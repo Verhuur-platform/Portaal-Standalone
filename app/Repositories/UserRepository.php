@@ -35,7 +35,11 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
         $query = User::query();
 
         $query->when($filter === 'actief', function (Builder $builder) {
-            return null;
+            return $builder->withoutBanned();
+        });
+
+        $query->when($filter === 'gedeactiveerd', function (Builder $builder) {
+            return $builder->onlyBanned();
         });
 
         $query->when($filter === 'verwijderd' && auth()->user()->hasRole('webmaster'), function (Builder $builder) {

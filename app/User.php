@@ -8,10 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends UserRepository
+class User extends UserRepository implements BannableContract
 {
-    use Notifiable, Auditable, SoftDeletes, HasRoles;
+    use Notifiable, Auditable, SoftDeletes, HasRoles, Bannable;
 
     /**
      * The attributes that are mass assignable.
