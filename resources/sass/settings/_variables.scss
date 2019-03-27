@@ -1,0 +1,83 @@
+
+
+// Typography
+$font-family-sans-serif: "Nunito", sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+$text-muted: #9aa0ac;
+$text-muted-dark: #6e7687;
+$h6-table-font-size: .875rem; //14px
+$table-accent-bg: rgba(0, 0, 0, .02);
+$table-accent-bg: rgba(0, 0, 0, .02);
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66D9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$primary: $blue;
+
+$blue: #467fcf;
+$azure: #45aaf2;
+$indigo: #6574cd;
+$purple: #a55eea;
+$pink: #f66d9b;
+$red: #cd201f;
+$orange: #fd9644;
+$yellow: #f1c40f;
+$lime: #7bd235;
+$green: #5eba00;
+$teal: #2bcbba;
+$cyan: #17a2b8;
+
+
+$text-muted: #9aa0ac;
+$text-muted-dark: #6e7687;
+
+$white: #fff;
+
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $azure;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-100;
+$dark: $gray-800;
+
+$border-color: rgba(0, 40, 100, .12);
+// Body
+$body-bg: #f5f7fb;
+$body-color: $gray-700;
+
+$badge-font-weight: 600;
+
+// Pagination
+$pagination-color: $body-color;
+$pagination-disabled-color: $gray-400;
+
+// Cards
+$card-border-color: $border-color;
+$card-table-spacer-y: 1.5rem;
+$card-table-spacer-x: 1.5rem;
+
+// Colors SGV 
+$sgv-brown: #572600;
+$sgv-green: #bdd732;
+$sgv-green-dark: #748d26;
