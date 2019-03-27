@@ -18,8 +18,14 @@
   color: $sgv-brown !important;
 }
 
+@include text-emphasis-variant(".text-sgv-brown", $sgv-brown);
+
 .bg-brown {
   background-color: $sgv-brown;
+}
+
+.form-search {
+  width:  235px;
 }
 
 .bg-green, .bg-green-stamp {

@@ -27,8 +27,8 @@
                     </div>
                 </div>
 
-                <form method="GET" action="" class="w-100 ml-2">
-                    <input type="text" class="shadow-sm form-control" @input('term') placeholder="Zoeken">
+                <form method="GET" action="" class="form-search ml-2">
+                    <input type="text" class="form-control border-0 shadow-sm" @input('term') placeholder="Zoeken">
                 </form>
             </div>
         </div>

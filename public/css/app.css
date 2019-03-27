@@ -12031,8 +12031,21 @@ a.badge-notifications.focus {
   box-shadow: 0 0 0 0.2rem rgba(189, 215, 50, 0.5);
 }
 
+.text-sgv-brown {
+  color: #572600 !important;
+}
+
+a.text-sgv-brown:hover,
+a.text-sgv-brown:focus {
+  color: #0b0500 !important;
+}
+
 .bg-brown {
   background-color: #572600;
+}
+
+.form-search {
+  width: 235px;
 }
 
 .bg-green,
