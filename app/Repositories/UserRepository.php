@@ -30,6 +30,14 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
         $this->attributes['password'] = bcrypt($password);
     }
 
+    /**
+     * Method for getting application logins by filter criteria. 
+     * --- 
+     * Fallback = all users when the user is not permitted to the criteria. 
+     * 
+     * @param   null|string $filter   The name of the filter criteria that should be applied. 
+     * @return  Builder
+     */
     public function getUsersByRequest(?string $filter = null): Builder
     {
         $query = User::query();
@@ -52,7 +60,7 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     /**
      * Method for deleting an user in the application. 
      * 
-     * @param  Request $request The request information collection 
+     * @param  Request $request The request information collection instance
      * @return void
      */
     public function deleteLogin(Request $request): void 
