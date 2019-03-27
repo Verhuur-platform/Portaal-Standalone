@@ -13,6 +13,14 @@
 		border: none;
 	}
 }
+
+.table-no-results {
+	column-span: 6; /* W3C */
+-webkit-column-span: 6; /* Safari & Chrome */
+-moz-column-span: 6; /* Firefox */
+-ms-column-span: 6; /* Internet Explorer */
+-o-column-span: 6; /* Opera */
+}
 .card-table {
 	margin-bottom: 0;
 

@@ -39,7 +39,7 @@
 
         <div class="card">
             <div class="table-responsive">
-                <table class="table table-hover mb-0 card-table table-vcenter text-nowrap">
+                <table class="table @if (count($users) > 0) table-hover @endif mb-0 card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -83,7 +83,8 @@
                             </tr>     
                         @empty 
                             <tr>
-                                <td colspan="6" class="text-muted">
+                                <td class="table-no-results">
+                                    <i class="icon fe fe-info mr-2"></i>
                                     Er zijn geen gebruikers gevonden met de matchende term of criteria.
                                 </td>
                             </tr>

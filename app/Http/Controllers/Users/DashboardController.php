@@ -39,8 +39,8 @@ class DashboardController extends Controller
      */
     public function index(User $users, ?string $filter = null): Renderable
     {
-        // TODO: Implement repository function for determining the group of users you want to display.
-        return view('users.dashboard', ['users' => $users->withTrashed()->simplePaginate()]);
+        $users = $users->getUsersByRequest($filter);
+        return view('users.dashboard', ['users' => $users->simplePaginate()]);
     }
 
     /**

@@ -2,11 +2,13 @@
 
 namespace App\Repositories; 
 
+use App\User;
 use App\Traits\SecuredRequest;
 use App\Traits\FlashMessenger; 
 use App\Interfaces\FlashMessengerInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class UserRepository 
@@ -28,6 +30,21 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
         $this->attributes['password'] = bcrypt($password);
     }
 
+    public function getUsersByRequest(?string $filter = null): Builder
+    {
+        $query = User::query();
+
+        $query->when($filter === 'actief', function (Builder $builder) {
+            return null;
+        });
+
+        $query->when($filter === 'verwijderd' && auth()->user()->hasRole('webmaster'), function (Builder $builder) {
+            return $builder->onlyTrashed();
+        });
+
+        return $query; // No matching filter is found. So return a builder instance without any scopes on it.
+    } 
+
     /**
      * Method for deleting an user in the application. 
      * 
@@ -38,12 +55,10 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     {
         if ($this->isRequestSecured($request->confirmatie) && $this->delete()) {
             $this->logActivity('Logins', "heeft de gebruiker {$this->name} verwijderd in het portaal.");
-
-            $undoLink = '<a href="'. route('users.delete.undo', $this) .'" class="ml-2 text-decoration-none">Ongedaan maken</a>'; 
-            $this->flashSuccess("De login van {$this->name} is verwijderd in het portaal. {$undoLink}")->important();
+            $this->flashSuccess("De login van {$this->name} is verwijderd in het portaal.");
         } 
 
-        // The user is not deleted in the application se return an error as flash message. 
+        // The user is not deleted in the application so return an error as flash message. 
         else {
             $this->flashWarning("De login van {$this->name} kon niet worden verwijderd in de applicatie.");
         }
