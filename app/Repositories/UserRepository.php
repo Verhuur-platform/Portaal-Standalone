@@ -18,6 +18,17 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     use SecuredRequest, FlashMessenger;
 
     /**
+     * Method for hashing the given password in the application storage.
+     *
+     * @param  string $password The given or generated password from the application/form.
+     * @return void
+     */
+    public function setPasswordAttribute(string $password): void
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
      * Method for deleting an user in the application. 
      * 
      * @param  Request $request The request information collection 

@@ -60,7 +60,7 @@ class AclTableSeeder extends Seeder
         $user = $this->createUser()->assignRole($role->name);
         
         if ($this->roleIsWebmaster($role->name)) {
-            $this->command->info('Here are your admin details to login:'); 
+            $this->command->info('Here are your webmaster details to login:'); 
             $this->command->warn($user->email);
             $this->command->warn('Password is "password"');
         }
