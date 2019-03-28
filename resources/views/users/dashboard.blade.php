@@ -58,9 +58,17 @@
                                 
                                 <td> {{-- Gebruikers status --}}
                                     @if ($user->trashed())
-                                        <span class="badge badge-danger"><i class="fe fe-trash-2 mr-1"></i> Verwijderd</span>
-                                    @else 
-                                        <span class="badge badge-warning"><i class="fe fe-lock mr-1"></i> Gedeactiveerd</span>
+                                        <span class="badge badge-deleted">Verwijderd</span>
+                                    @else {{-- User is not provisioned for deltion in the application. --}}
+                                        @if ($user->isBanned()) 
+                                            <span class="badge badge-locked">Gedeactiveerd</span>
+                                        @else {{-- User can login in the application --}}
+                                            @if ($user->isOnline()) 
+                                                <span class="badge badge-online">Online</span>
+                                            @else {{-- The user isn't online currently --}}
+                                                <span class="badge badge-offline">Offline</span> 
+                                            @endif
+                                        @endif
                                     @endif
                                 </td> {{-- /// Gebruikers status --}}
 
@@ -74,9 +82,15 @@
                                                 <i class="fe fe-eye"></i>
                                             </a>
 
-                                            <a href="{{ route('users.lock', $user) }}" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
-                                                <i class="fe fe-lock"></i>
-                                            </a>
+                                            @if ($user->isNotBanned())
+                                                <a href="{{ route('users.lock', $user) }}" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
+                                                    <i class="fe fe-lock"></i>
+                                                </a>
+                                            @else {{-- User is banned in the application --}}
+                                                <a href="" class="text-decoration-none text-secondary mr-1">
+                                                    <i class="fe fe-unlock"></i>
+                                                </a>
+                                            @endif
                                         @endif
 
                                         @if ($user->trashed()) 

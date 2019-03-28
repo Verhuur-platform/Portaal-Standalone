@@ -49037,7 +49037,7 @@ var app = new Vue({
  */
 
 $(document).ready(function () {
-  $('div.alert').not('.alert-important').delay(5000).fadeOut(350, function () {
+  $('div.alert').not('.alert-important').delay(4000).fadeOut(350, function () {
     $(this).alert('close');
   });
 });

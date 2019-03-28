@@ -17,7 +17,7 @@
     <div class="container-fluid pb-3">
         <div class="row">
             <div class="col-9"> {{-- Content --}}
-                <form action="" method="POST" class="card border-0 card-body">
+                <form action="{{ route('users.lock.store', $userEntity) }}" method="POST" class="card border-0 card-body">
                     @csrf {{-- Form field protection --}}
                     <h6 class="border-bottom border-gray pb-1 mb-3">Deactiveer login van <strong>{{ $userEntity->name }}</strong></h6>
 
@@ -28,7 +28,7 @@
 
                     <p class="card-text">
                         Vandaar dat we je vragen om twee keer na te denken voor u overgaat tot de blokkering van de login. <br>
-                        Indien u wilt verder gaan met de activatie vragen wij je je wachtwoord en een redevoering in het onderstaande formulier
+                        Indien u wilt verder gaan met de deactivatie vragen wij je je wachtwoord en een redevoering in het onderstaande formulier
                         in te vullen ter controle en informatie. De rede zal ook meegedeeld worden aan {{ $userEntity->name }}.
                     </p>
 
@@ -36,8 +36,8 @@
 
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <input type="password" placeholder="Uw wachtwoord ter bevestiging" class="form-control @error('wachtwoord', 'is-invalid')" @input('wachtwoord')>
-                            @error('wachtwoord')
+                            <input type="password" placeholder="Uw wachtwoord ter bevestiging" class="form-control @error('confirmatie', 'is-invalid')" @input('confirmatie')>
+                            @error('confirmatie')
                         </div>
 
                         <div class="form-group col-12">

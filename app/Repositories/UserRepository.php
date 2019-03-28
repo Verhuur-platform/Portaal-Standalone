@@ -9,6 +9,7 @@ use App\Interfaces\FlashMessengerInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class UserRepository 
@@ -28,6 +29,16 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     public function setPasswordAttribute(string $password): void
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
+     * Method for tracking if the given user is online or not. 
+     * 
+     * @return bool
+     */
+    public function isOnline(): bool 
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 
     /**

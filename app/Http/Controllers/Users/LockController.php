@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use App\Http\Requests\Users\LockValidator;
 
 /**
  * Class LockController
@@ -66,9 +67,24 @@ class LockController extends Controller
         return view('users.lock', compact('userEntity'));
     }
 
-    public function store(): RedirectResponse
+    /**
+     * Method for storing the user lock in the application (portal).
+     * 
+     * @param  LockValidator $input The form request class that handles the validation.
+     * @param  User          $user  The database storage entity from the given user.
+     * @return RedirectResponse
+     */
+    public function store(LockValidator $input, User $userEntity): RedirectResponse
     {
+        $this->authorize('create-lock', $userEntity); 
+        $authUser = Auth::user();
 
+        if ($authUser->isRequestSecured($input->confirmatie)) {
+            $userEntity->ban(['comment' => $input->reden]);
+            $authUser->logActivity('Logins', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
+        }
+
+        return redirect()->route('users.show', $userEntity);
     }
 
     public function delete(User $user): RedirectResponse
