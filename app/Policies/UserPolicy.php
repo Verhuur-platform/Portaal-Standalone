@@ -25,4 +25,9 @@ class UserPolicy
     {
         return $user->is($model);
     }
+
+    public function createLock(User $user, User $model): bool 
+    {
+        return ! $this->sameUser($user, $model) && $model->isNotBanned();
+    }
 }

@@ -74,7 +74,7 @@
                                                 <i class="fe fe-eye"></i>
                                             </a>
 
-                                            <a href="" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
+                                            <a href="{{ route('users.lock', $user) }}" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
                                                 <i class="fe fe-lock"></i>
                                             </a>
                                         @endif

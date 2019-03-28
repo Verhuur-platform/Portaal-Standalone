@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
+use App\Http\Controllers\Users\LockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
 Route::get('/login/undo/{trashedUser}', [LoginsDashboardController::class, 'undoDeleteRoute'])->name('users.delete.undo');
 Route::get('/logins/{filter?}', [LoginsDashboardController::class, 'index'])->name('users.index');
+
+// Login lock routes
+Route::get('/deactiveer/{userEntity}', [LockController::class, 'create'])->name('users.lock');

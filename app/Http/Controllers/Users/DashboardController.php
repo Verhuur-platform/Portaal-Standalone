@@ -28,7 +28,8 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->authUser = Auth::user();
+        $this->middleware(['auth', 'role:gebruiker|webmaster']);
         $this->middleware(['role:webmaster'])->only(['undoDeleteRoute']);
     }
 
