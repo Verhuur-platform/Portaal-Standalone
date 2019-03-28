@@ -31,6 +31,16 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     }
 
     /**
+     * Method for determining if the authenticated user can access the deleted user overview or not. 
+     * 
+     * @return bool 
+     */
+    public function cantAccessDeletedOverview(): bool 
+    {
+        return ! $this->hasRole('webmaster') && url()->current() === url('/logins/verwijderd');
+    }
+
+    /**
      * Method for getting application logins by filter criteria. 
      * --- 
      * Fallback = all users when the user is not permitted to the criteria. 

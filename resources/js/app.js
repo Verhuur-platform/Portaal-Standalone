@@ -36,7 +36,7 @@ const app = new Vue({
  * 3Th party JQuery assers
  */
 $(document).ready(function() {
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(350, function() {
+    $('div.alert').not('.alert-important').delay(4000).fadeOut(350, function() {
         $(this).alert('close');
     });
 });

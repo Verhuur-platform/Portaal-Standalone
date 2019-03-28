@@ -22,7 +22,7 @@
     <body>
         <div id="app">
             <nav class="navbar navbar-expand-lg navbar-dark bg-brown">
-                <img src="{{ asset('img/logo.jpg') }}" width="25" height="25" class="mr-3 rounded-circle d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
+                <img src="{{ asset('img/logo.jpg') }}" width="25" height="25" class="mr-3 rounded shadow-lg d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
                 <a class="navbar-brand mr-auto mr-lg-0" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }} - Verhuurportaal
                 </a>

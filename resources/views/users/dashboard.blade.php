@@ -57,9 +57,11 @@
                                 <td>{{ $user->name }}</td>
                                 
                                 <td> {{-- Gebruikers status --}}
-                                    <span class="badge badge-warning">
-                                        <i class="fe fe-lock mr-1"></i> Gedeactiveerd
-                                    </span>
+                                    @if ($user->trashed())
+                                        <span class="badge badge-danger"><i class="fe fe-trash-2 mr-1"></i> Verwijderd</span>
+                                    @else 
+                                        <span class="badge badge-warning"><i class="fe fe-lock mr-1"></i> Gedeactiveerd</span>
+                                    @endif
                                 </td> {{-- /// Gebruikers status --}}
 
                                 <td>{{ $user->email }}</td>
@@ -67,17 +69,25 @@
 
                                 <td> {{-- Functies met betrekking tot de gebruiker --}}
                                     <span class="float-right">
-                                        <a href="" class="text-decoration-none text-secondary mr-1">
-                                            <i class="fe fe-eye"></i>
-                                        </a>
+                                        @if (! $user->trashed())
+                                            <a href="" class="text-decoration-none text-secondary mr-1">
+                                                <i class="fe fe-eye"></i>
+                                            </a>
 
-                                        <a href="" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
-                                            <i class="fe fe-lock"></i>
-                                        </a>
+                                            <a href="" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
+                                                <i class="fe fe-lock"></i>
+                                            </a>
+                                        @endif
 
-                                        <a href="{{ route('users.delete', $user) }}" class="text-decoration-none text-danger">
-                                            <i class="fe fe-trash-2"></i>
-                                        </a>
+                                        @if ($user->trashed()) 
+                                            <a href="{{ route('users.delete.undo', $user)}}" class="text-decoration-none text-success">
+                                                <i class="fe fe-rotate-ccw"></i>
+                                            </a>
+                                        @else {{-- The user is not deleted in the application. --}}
+                                            <a href="{{ route('users.delete', $user) }}" class="text-decoration-none text-danger">
+                                                <i class="fe fe-trash-2"></i>
+                                            </a>
+                                        @endif
                                     </span>
                                 </td> {{-- /// Gebruiker functies --}}
                             </tr>     

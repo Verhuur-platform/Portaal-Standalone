@@ -10,6 +10,7 @@ use App\User;
 use Mpociot\Reanimate\ReanimateModels;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response;
 
 /**
  * Class DashboardController
@@ -34,12 +35,14 @@ class DashboardController extends Controller
     /**
      * Method for displaying the dashboard for the application logins. 
      *
-     * @param  User         $users
-     * @param  null|string  $filter
+     * @param  User         $users  The database model entity from the users storage.
+     * @param  null|string  $filter The filter name that needs to be applied. Defaults to null.
      * @return Renderable
      */
     public function index(User $users, ?string $filter = null): Renderable
     {
+        abort_if(Auth::user()->cantAccessDeletedOverview(), Response::HTTP_FORBIDDEN);
+
         $users = $users->getUsersByRequest($filter);
         return view('users.dashboard', ['users' => $users->simplePaginate()]);
     }
