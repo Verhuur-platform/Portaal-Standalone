@@ -53,7 +53,7 @@
                     <tbody>
                         @forelse ($users as $user)
                             <tr>
-                                <td><span class="text-muted table-id">#{{ $user->id }}</span></td>
+                                <th scope="row"><span class="text-muted table-id">#{{ $user->id }}</span></th>
                                 <td>{{ $user->name }}</td>
                                 
                                 <td> {{-- Gebruikers status --}}
@@ -107,7 +107,7 @@
                             </tr>     
                         @empty 
                             <tr>
-                                <td class="table-no-results">
+                                <td colspan="6" class="table-no-results">
                                     <i class="icon fe fe-info mr-2"></i>
                                     Er zijn geen gebruikers gevonden met de matchende term of criteria.
                                 </td>

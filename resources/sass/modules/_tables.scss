@@ -13,7 +13,6 @@
 		border: none;
 	}
 }
-
 .card-header-overview {
 	padding-top: 0.60rem;
 	padding-bottom: 0.60rem;
@@ -29,13 +28,6 @@
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
-.table-no-results {
-	column-span: 6; /* W3C */
--webkit-column-span: 6; /* Safari & Chrome */
--moz-column-span: 6; /* Firefox */
--ms-column-span: 6; /* Internet Explorer */
--o-column-span: 6; /* Opera */
-}
 .card-table {
 	margin-bottom: 0;
 
@@ -76,7 +68,7 @@
   padding-bottom: 0.42rem !important;
   padding-top: 0.42rem !important;
   vertical-align: top;
-  border-top: 1px solid rgba(0, 40, 100, 0.12);
+  border-top: 1px solid $border-color;
 }
 
 .table {
@@ -147,9 +139,11 @@
 	}
 }
 
+
+
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 1px solid rgba(0, 40, 100, 0.12) !important;
+  border-bottom: 1px solid $gray-300 !important;
 }
 
 .table-calendar-link {

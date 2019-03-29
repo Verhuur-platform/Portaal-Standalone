@@ -61,7 +61,7 @@
                         <th>Huurder</th>
                         <th>Periode</th>
                         <th>Aantal personen</th>
-                        <th>Aangevraagd op</th>
+                        <th>Toegevoegd op</th>
                         <th></th>
                     </tr>
                 </thead>
