@@ -3,6 +3,7 @@
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
 use App\Http\Controllers\Users\LockController;
 use App\Http\Controllers\Users\AccountController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,11 @@ use App\Http\Controllers\Users\AccountController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+// Index Routes
+Route::get('/', [HomeController::class, 'indexFrontend'])->name('welcome');
+Route::get('/home', [HomeController::class, 'indexBackend'])->name('home');
 
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
@@ -38,3 +36,4 @@ Route::patch('/account/beveiliging', [AccountController::class, 'updateSecurity'
 Route::get('/deactiveer/{userEntity}', [LockController::class, 'create'])->name('users.lock');
 Route::get('/activeer/{userEntity}', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('users.lock.store');
+Route::get('/gedeactiveerd', [LockController::class, 'index'])->name('user.deactivated');

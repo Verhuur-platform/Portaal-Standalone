@@ -14,7 +14,7 @@
 
         {{-- Styles --}}
         <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-        <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}">
     </head>
     <body class="my-login-page">
         <div id="app">

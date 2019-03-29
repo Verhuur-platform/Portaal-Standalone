@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
 
+/**
+ * Class HomeController
+ * 
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -13,7 +18,18 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth'])->only(['indexBackend']);
+        $this->middleware('guest')->only('indexFrontend');
+        $this->middleware(['auth', 'forbid-banned-user'])->only(['indexBackend']);
+    }
+
+    /**
+     * Display the welcome page of the application. 
+     * 
+     * @return Renderable
+     */
+    public function indexFrontend(): Renderable 
+    {
+        return view('auth.login');
     }
 
     /**
@@ -21,7 +37,7 @@ class HomeController extends Controller
      *
      * @return Renderable
      */
-    public function indexBackend()
+    public function indexBackend(): Renderable
     {
         return view('home');
     }
