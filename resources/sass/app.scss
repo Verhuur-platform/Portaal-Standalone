@@ -58,6 +58,19 @@
 	}
 }
 
+.btn-brown {
+  @include button-variant($sgv-green-dark, $sgv-green-dark);
+  white-space: nowrap;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+  padding  : .25rem .4rem;
+  font-size  : .875rem;
+  line-height  : .8;
+  border-radius : .2rem;
+  justify-content:center;
+}
+
 .icon i,
 .icon a {
   vertical-align: -1px;
@@ -93,6 +106,34 @@
 .badge-default {
 	background: $gray-200;
 	color: $gray-600;
+}
+
+// Stamp partial 
+.stamp {
+  color: #fff;
+  background: #868e96;
+  display: inline-block;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 .25rem;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.stamp-md {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.row-cards > .col,
+.row-cards > [class*='col-'] {
+display: -ms-flexbox;
+display: flex;
+-ms-flex-direction: column;
+flex-direction: column;
 }
 
 .blankslate {

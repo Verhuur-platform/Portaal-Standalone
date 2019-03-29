@@ -74,7 +74,7 @@
 
             <div class="nav-scroller bg-green shadow-sm">
                 <nav class="nav nav-underline">
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active('home') }}" href="{{ route('home') }}">
                         <i class="fe fe-home mr-1"></i> Dashboard
                     </a>
 

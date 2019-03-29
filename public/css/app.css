@@ -1123,6 +1123,20 @@
   }
 }
 
+.card-header-overview {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  margin-bottom: 0;
+  background-color: #bdd732;
+  border-bottom: 1px solid #bcd62f;
+}
+
+.card-header-overview:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
 .table-no-results {
   column-span: 6;
   /* W3C */
@@ -12079,6 +12093,54 @@ a.text-sgv-brown:focus {
   left: 0.75rem;
 }
 
+.btn-brown {
+  color: #fff;
+  background-color: #748d26;
+  border-color: #748d26;
+  white-space: nowrap;
+}
+
+.btn-brown:hover {
+  color: #fff;
+  background-color: #5b6f1e;
+  border-color: #53651b;
+}
+
+.btn-brown:focus,
+.btn-brown.focus {
+  box-shadow: 0 0 0 0.2rem rgba(137, 158, 71, 0.5);
+}
+
+.btn-brown.disabled,
+.btn-brown:disabled {
+  color: #fff;
+  background-color: #748d26;
+  border-color: #748d26;
+}
+
+.btn-brown:not(:disabled):not(.disabled):active,
+.btn-brown:not(:disabled):not(.disabled).active,
+.show > .btn-brown.dropdown-toggle {
+  color: #fff;
+  background-color: #53651b;
+  border-color: #4b5b18;
+}
+
+.btn-brown:not(:disabled):not(.disabled):active:focus,
+.btn-brown:not(:disabled):not(.disabled).active:focus,
+.show > .btn-brown.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(137, 158, 71, 0.5);
+}
+
+.btn-group-xs > .btn,
+.btn-xs {
+  padding: 0.25rem 0.4rem;
+  font-size: 0.875rem;
+  line-height: 0.8;
+  border-radius: 0.2rem;
+  justify-content: center;
+}
+
 .icon i,
 .icon a {
   vertical-align: -1px;
@@ -12108,6 +12170,31 @@ a.text-sgv-brown:focus {
 .badge-default {
   background: #e9ecef;
   color: #868e96;
+}
+
+.stamp {
+  color: #fff;
+  background: #868e96;
+  display: inline-block;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.25rem;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.stamp-md {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.row-cards > .col,
+.row-cards > [class*=col-] {
+  display: flex;
+  flex-direction: column;
 }
 
 .blankslate {

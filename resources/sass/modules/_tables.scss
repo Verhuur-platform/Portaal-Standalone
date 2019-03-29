@@ -14,6 +14,21 @@
 	}
 }
 
+.card-header-overview {
+	padding-top: 0.60rem;
+	padding-bottom: 0.60rem;
+	padding-left: 1.5rem;
+	padding-right: 1rem;
+  margin-bottom: 0;
+	background-color: $sgv-green;
+  border-bottom: 1px solid darken($sgv-green, 0.75%);
+}
+
+
+.card-header-overview:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
 .table-no-results {
 	column-span: 6; /* W3C */
 -webkit-column-span: 6; /* Safari & Chrome */
