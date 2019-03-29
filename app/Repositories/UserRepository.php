@@ -96,4 +96,16 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
             $this->flashWarning("De login van {$this->name} kon niet worden verwijderd in de applicatie.");
         }
     }
+
+    /**
+     * Method for deleting the user lock in the application. 
+     * 
+     * @return void
+     */
+    public function removeLock(): void 
+    {
+        $this->unban();
+        $this->logActivity('Logins', "heeft de login van {$this->name} terug geactiveerd in het portaal.");
+        $this->flashInfo("De login van {$this->name} is terug actief in het systeem.");
+    }
 }

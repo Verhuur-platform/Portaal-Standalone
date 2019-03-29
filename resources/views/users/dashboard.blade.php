@@ -87,7 +87,7 @@
                                                     <i class="fe fe-lock"></i>
                                                 </a>
                                             @else {{-- User is banned in the application --}}
-                                                <a href="" class="text-decoration-none text-secondary mr-1">
+                                                <a href="{{ route('users.unlock', $user) }}" class="text-decoration-none text-secondary mr-1">
                                                     <i class="fe fe-unlock"></i>
                                                 </a>
                                             @endif

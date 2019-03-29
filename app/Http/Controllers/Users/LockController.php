@@ -19,16 +19,8 @@ use App\Http\Requests\Users\LockValidator;
 class LockController extends Controller
 {
     /**
-     * The Guard implementation.
-     *
-     * @var Guard $auth
-     */
-    protected $auth;
-
-    /**
      * Create new LockController instance. 
      * 
-     * @param  Guard $auth The authentication guard variable.
      * @return void
      */
     public function __construct()
@@ -79,16 +71,29 @@ class LockController extends Controller
         $this->authorize('create-lock', $userEntity); 
         $authUser = Auth::user();
 
-        if ($authUser->isRequestSecured($input->confirmatie)) {
-            $userEntity->ban(['comment' => $input->reden]);
+        if ($authUser->isRequestSecured($input->confirmatie) && $userEntity->ban(['comment' => $input->reden])) {
             $authUser->logActivity('Logins', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
-        }
 
-        return redirect()->route('users.show', $userEntity);
+            return redirect()->route('users.show', $userEntity);
+        } 
+
+        // The request could not be secured so redirect the user back to the lock create view
+        // And display him an validation error 
+        return redirect()->route('users.lock', $userEntity)
+            ->withErrors(['confirmatie' => 'Het gegeven wachtwoord klopt niet met uw huidige wachtwoord.']);
     }
 
-    public function delete(User $user): RedirectResponse
+    /**
+     * Method for remove a user lock in the application.
+     * 
+     * @param  User $userEntity The database storage entity from the given user.
+     * @return RedirectResponse
+     */
+    public function destroy(User $userEntity): RedirectResponse
     {
+        $this->authorize('remove-lock', $userEntity);
 
+        $userEntity->removeLock();
+        return redirect()->route('users.index');
     }
 }

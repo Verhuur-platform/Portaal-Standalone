@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  * Trait SecuredRequestTrait 
- * 
+ * ----
  * Trait for securing actions with an hash check of the authenticated user. 
+ * 
+ * @todo Refactor to custom rule object. <https://laravel.com/docs/5.8/validation#custom-validation-rules>
  * 
  * @package App\Traits
  */

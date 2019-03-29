@@ -30,4 +30,5 @@ Route::get('/logins/{filter?}', [LoginsDashboardController::class, 'index'])->na
 
 // Login lock routes
 Route::get('/deactiveer/{userEntity}', [LockController::class, 'create'])->name('users.lock');
+Route::get('/activeer/{userEntity}', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('users.lock.store');

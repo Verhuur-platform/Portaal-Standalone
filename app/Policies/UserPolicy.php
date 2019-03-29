@@ -26,8 +26,27 @@ class UserPolicy
         return $user->is($model);
     }
 
+    /**
+     * Determine whether the auth user can create a user lock or not. 
+     * 
+     * @param  User  $user  The resource entity from the authenticated user.
+     * @param  User  $model The resource entity from the given model.
+     * @return bool
+     */
     public function createLock(User $user, User $model): bool 
     {
         return ! $this->sameUser($user, $model) && $model->isNotBanned();
+    }
+
+    /**
+     * Determine whether the auth user can remove the user lock or not. 
+     * 
+     * @param  User  $user  The resource entity from the authenticated user.
+     * @param  User  $model The resource entity from the given model.
+     * @return bool
+     */
+    public function removeLock(User $user, User $model): bool 
+    {
+        return ! $this->sameUser($user, $model) && $model->isBanned();
     }
 }

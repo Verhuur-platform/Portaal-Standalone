@@ -32,7 +32,7 @@ trait FlashMessenger
      */
     public function flashDanger(string $message): FlashNotifier
     {
-        return $this->flashMessage($message)->danger();
+        return $this->flashMessage($message)->error();
     }
 
     /**
