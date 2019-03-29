@@ -87,7 +87,10 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
     public function deleteLogin(Request $request): void 
     {
         if ($this->isRequestSecured($request->confirmatie) && $this->delete()) {
-            $this->logActivity('Logins', "heeft de gebruiker {$this->name} verwijderd in het portaal.");
+            if (auth()->user()->cannot('same-user', $this)) {
+                $this->logActivity('Logins', "heeft de gebruiker {$this->name} verwijderd in het portaal.");
+            } 
+
             $this->flashSuccess("De login van {$this->name} is verwijderd in het portaal.");
         } 
 

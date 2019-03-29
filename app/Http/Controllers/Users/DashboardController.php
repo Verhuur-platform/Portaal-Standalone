@@ -58,7 +58,7 @@ class DashboardController extends Controller
     public function destroy(Request $request, User $user) 
     {
         if ($request->isMethod('GET')) {
-            $viewPath = (Gate::allows('same-user', $user)) ? 'users.settings.delete' : 'users.delete';
+            $viewPath = (Gate::allows('same-user', $user)) ? 'account.delete' : 'users.delete';
             return view($viewPath, compact('user'));
         }
 

@@ -20,7 +20,7 @@ class User extends UserRepository implements BannableContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'firstname', 'lastname', 'phone_number', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
