@@ -6,6 +6,9 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use App\Http\Requests\Users\SecurityValidator;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use App\Http\Requests\Users\InformationValidator;
 
 /**
  * Class AccountController
@@ -25,6 +28,17 @@ class AccountController extends Controller
     }
 
     /**
+     * Method for displaying the account information settings 
+     * 
+     * @return Renderable
+     */
+    public function showInformation(User $user): Renderable 
+    {
+        $ban = $user->bans()->latest()->first();
+        return view('account.information', compact('user', 'ban'));
+    }
+
+    /**
      * Method for displaying the account security settings. 
      * 
      * @return Renderable 
@@ -32,6 +46,18 @@ class AccountController extends Controller
     public function showSecurity(): Renderable
     {
         return view('account.security', ['user' => auth()->user()]);
+    }
+
+    public function updateInformation(InformationValidator $input): RedirectResponse
+    {
+        $user = auth()->user();
+        $input->merge(['name' => "{$input->firstname} {$input->lastname}"]);
+
+        if ($user->update($input->all())) {
+            $user->flashSuccess('Uw hebt uw account informatie met succes aangepast.');
+        } 
+
+        return redirect()->route('users.account.info', $user);
     }
 
     /**
@@ -46,7 +72,6 @@ class AccountController extends Controller
 
         if ($user->isRequestSecured($input->huidig_wachtwoord) && $user->update(['password' => $input->wachtwoord])) {
             $user->flashInfo('Uw beveiligings instellingen zijn met success aangepast.');
-            auth()->logoutOtherDevices($input->wachtwoord);
         } 
         
         else { // Could not secure the request. So we abort the security update process. 

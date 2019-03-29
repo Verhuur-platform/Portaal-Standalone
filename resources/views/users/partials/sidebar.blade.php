@@ -1,5 +1,5 @@
 <div class="list-group list-group-transparent">
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('users.account.info', $user) }}" class="list-group-item list-group-item-action {{ active('users.account.info') }}">
         <i class="fe fe-info text-sgv-brown mr-3"></i> Account informatie
     </a>
 
@@ -20,7 +20,7 @@
             <i class="fe fe-lock text-sgv-brown mr-3"></i> Deactiveer login
         </a>
     @elseif($currentUser->can('remove-lock', $user)) 
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('users.unlock', $user) }}" class="list-group-item list-group-item-action">
             <i class="fe fe-unlock text-sgv-brown mr-3"></i> Deactivatie opheffen
         </a>
     @endif

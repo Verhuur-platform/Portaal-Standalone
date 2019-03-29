@@ -5,7 +5,6 @@ namespace App;
 use App\Traits\Auditable;
 use App\Repositories\UserRepository;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableContract;

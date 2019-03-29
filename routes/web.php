@@ -31,6 +31,7 @@ Route::get('/logins/{filter?}', [LoginsDashboardController::class, 'index'])->na
 
 // Account settings route
 Route::get('/account/beveiliging', [AccountController::class, 'showSecurity'])->name('users.account.security');
+Route::get('/account/informatie/{user}', [AccountController::class, 'showInformation'])->name('users.account.info');
 Route::patch('/account/beveiliging', [AccountController::class, 'updateSecurity'])->name('users.security.update');
 
 // Login lock routes

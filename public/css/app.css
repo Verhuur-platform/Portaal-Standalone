@@ -15,7 +15,7 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
+  line-height: 0.9;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12163,6 +12163,16 @@ html {
 
 .copyright {
   color: #fff;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #f1f5f8;
+  pointer-events: none;
+  opacity: 1;
+  color: #606F7B;
+  border: 0 !important;
+  outline: none;
 }
 
 .badge-offline {

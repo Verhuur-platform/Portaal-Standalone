@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository 
@@ -28,7 +29,7 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
      */
     public function setPasswordAttribute(string $password): void
     {
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = Hash::make($password);
     }
 
     /**

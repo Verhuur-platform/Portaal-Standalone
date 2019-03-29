@@ -53,7 +53,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{{ route('users.account.info', $currentUser) }}">
                                     <i class="fe fe-sliders mr-1 text-secondary"></i> Instellingen
                                 </a>
 

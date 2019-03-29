@@ -74,7 +74,7 @@ class LockController extends Controller
         if ($authUser->isRequestSecured($input->confirmatie) && $userEntity->ban(['comment' => $input->reden])) {
             $authUser->logActivity('Logins', "Heeft de login van {$userEntity->name} gedeactiveerd in het systeem.");
 
-            return redirect()->route('users.show', $userEntity);
+            return redirect()->route('users.account.info', $userEntity);
         } 
 
         // The request could not be secured so redirect the user back to the lock create view

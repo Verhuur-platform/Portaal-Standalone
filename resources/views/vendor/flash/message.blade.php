@@ -40,7 +40,7 @@
                 @default <i class="icon fe fe-bell" aria-hidden="true"></i>
             @endswitch
 
-            {!! $message['message'] !!}
+            <span class="align-middle">{!! $message['message'] !!}</span>
         </div>
     @endif
 @endforeach

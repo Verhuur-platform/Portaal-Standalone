@@ -78,7 +78,7 @@
                                 <td> {{-- Functies met betrekking tot de gebruiker --}}
                                     <span class="float-right">
                                         @if (! $user->trashed())
-                                            <a href="" class="text-decoration-none text-secondary mr-1">
+                                            <a href="{{ route('users.account.info', $user) }}" class="text-decoration-none text-secondary mr-1">
                                                 <i class="fe fe-eye"></i>
                                             </a>
 
