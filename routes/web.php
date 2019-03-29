@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
+use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
 use App\Http\Controllers\Users\LockController;
 use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\HomeController;
@@ -37,3 +38,6 @@ Route::get('/deactiveer/{userEntity}', [LockController::class, 'create'])->name(
 Route::get('/activeer/{userEntity}', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('users.lock.store');
 Route::get('/gedeactiveerd', [LockController::class, 'index'])->name('user.deactivated');
+
+// Lease routes
+Route::get('/verhuringen/{filter?}', [LeasesDashboardController::class, 'index'])->name('lease.dashboard');

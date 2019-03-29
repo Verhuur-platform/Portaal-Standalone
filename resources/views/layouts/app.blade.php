@@ -83,7 +83,7 @@
                         <i class="fe fe-users mr-1"></i> Logins
                     </a>
                     
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active('lease*') }}" href="{{ route('lease.dashboard') }}">
                         <i class="fe fe-calendar mr-1"></i> Verhuringen
                     </a>
 
