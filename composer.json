@@ -18,6 +18,7 @@
         "mpociot/reanimate": "^1.0",
         "spatie/laravel-activitylog": "^3.2",
         "spatie/laravel-permission": "^2.36",
+        "valorin/pwned-validator": "^1.2",
         "watson/active": "^3.1"
     },
     "require-dev": {

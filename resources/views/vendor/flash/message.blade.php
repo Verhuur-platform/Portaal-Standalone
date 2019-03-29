@@ -18,7 +18,7 @@
 
             @switch ($message['level'])
                 @case('danger')  
-                    <i class="icon fe fe-x-octagon" aria-hidden="true"></i> 
+                    <i class="icon fe fe-alert-octagon" aria-hidden="true"></i> 
                     <span class="font-weight-bold mr-2">Foutmelding:</span>
                 @break
 

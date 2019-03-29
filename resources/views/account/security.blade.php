@@ -17,7 +17,7 @@
     <div class="container-fluid pb-3">
         <div class="row">
             <div class="col-md-9">
-                <form method="POST" action="" class="card card-body border-0 shadow-sm">
+                <form method="POST" action="{{ route('users.security.update') }}" class="card card-body border-0 shadow-sm">
                     @csrf {{-- Form field protection --}}
                     @method ('PATCH') {{-- HTTP method spoofing --}}
 
@@ -39,7 +39,7 @@
 
                         <div class="form-group col-6">
                             <label for="wachtwoordBevestiging">Bevestig wachtwoord <span class="text-danger">*</span></label>
-                            <input type="password", placeholder="Herhaal uw nieuw wachtwoord" id="wachtwoordBevestiging" class="form-control @error('wachtwoord_conformation', 'is-invalid')" @error('wachtwoord_confirmation')>
+                            <input type="password" placeholder="Herhaal uw nieuw wachtwoord" id="wachtwoordBevestiging" class="form-control @error('wachtwoord_conformation', 'is-invalid')" @input('wachtwoord_confirmation')>
                             @error('wachtwoord_confirmation')
                         </div>
                     </div>
