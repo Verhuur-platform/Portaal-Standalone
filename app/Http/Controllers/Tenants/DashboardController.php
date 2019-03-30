@@ -66,4 +66,31 @@ class DashboardController extends Controller
 
         return redirect()->route('tenants.dashboard');
     }
+
+    public function show(Tenant $tenant): Renderable
+    {
+
+    }
+
+    /**
+     * Method for deleting an tenant in the application.
+     *
+     * @throws \Exception <- When no tenant is found in the application.
+     *
+     * @param
+     * @param  Tenant $tenant The resource entity from the given tenant.
+     * @return Renderable|RedirectResponse
+     */
+    public function destroy(Request $request, Tenant $tenant)
+    {
+        if ($request->isMethod('GET')) {
+            return view('tenants.delete', compact('tenant'));
+        }
+
+        // Remove the tenant in the application.
+        // If success logging wil happen and a flash message returns.
+        $tenant->remove();
+
+        return redirect()->route('tenants.dashboard');
+    }
 }

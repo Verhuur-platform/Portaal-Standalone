@@ -47,7 +47,7 @@
                                             <i class="fe fe-eye"></i>
                                         </a>
 
-                                        <a href="" class="text-danger text-decoration-none">
+                                        <a href="{{ route('tenants.delete', $tenant) }}" class="text-danger text-decoration-none">
                                             <i class="fe fe-trash-2"></i>
                                         </a>
                                     </span>

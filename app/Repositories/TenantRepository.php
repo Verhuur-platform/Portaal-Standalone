@@ -6,7 +6,7 @@ use App\Models\Tenant;
 use App\Traits\FlashMessenger;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class TenantRepository
@@ -30,6 +30,20 @@ class TenantRepository extends Model
     }
 
     /**
+     * Remove an tenant in the application.
+     *
+     * @throws \Exception <- Native PHP class
+     * @return void
+     */
+    public function remove(): void
+    {
+        if ($this->delete()) {
+            $this->flashInfo($this->full_name . ' is verwijderd als huurder in de applicatie.');
+            Auth::user()->logActivity('Huurders', "Heeft {$tenant->full_name} verwijderd als huurder");
+        }
+    }
+
+    /**
      * Method for logging and creating a new tenant in the application.
      *
      * @param  array $attributes The attributes that needs to be saved.
@@ -39,7 +53,7 @@ class TenantRepository extends Model
     {
         if ($tenant = $this->create($attributes)) {
             auth()->user()->logActivity('Huurders', "Heeft {$tenant->full_name} toegevoegd als huurder.");
-            $this->flashSuccess($tenant->full_name . ' is toegevoegd als huurder in het portaal.');
+            $this->flashSuccess($this->full_name . ' is toegevoegd als huurder in het portaal.');
         }
 
         return $tenant;

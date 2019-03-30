@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lease;
+use App\Models\Tenant;
+use App\User;
 use Illuminate\Contracts\Support\Renderable;
 
 /**
@@ -37,8 +40,14 @@ class HomeController extends Controller
      *
      * @return Renderable
      */
-    public function indexBackend(): Renderable
+    public function indexBackend(User $user, Tenant $tenants): Renderable
     {
-        return view('home');
+        $counters = [
+            'leases'  => ['all' => Lease::count()],
+            'users'   => ['all' => $user->count(), 'deactivated' => $user->onlyBanned()->count()],
+            'tenants' => ['all' => $tenants->count(), 'today' => $tenants->whereDate('created_at', now())->count()],
+        ];
+
+        return view('home', compact('counters'));
     }
 }
