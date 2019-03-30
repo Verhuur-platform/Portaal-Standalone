@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Tenants\DashboardController;
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
 use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
 use App\Http\Controllers\Users\LockController;
@@ -22,6 +23,10 @@ Auth::routes(['register' => false]);
 // Index Routes
 Route::get('/', [HomeController::class, 'indexFrontend'])->name('welcome');
 Route::get('/home', [HomeController::class, 'indexBackend'])->name('home');
+
+// Tenant routes
+Route::get('/huurders', [DashboardController::class, 'index'])->name('tenants.dashboard');
+Route::get('/huurder/nieuw', [DashboardController::class, 'create'])->name('tenants.create');
 
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');

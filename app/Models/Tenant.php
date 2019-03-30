@@ -2,9 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Repositories\TenantRepository;
 
-class Tenant extends Model
+/**
+ * Class Tenant
+ *
+ * @package App\Models
+ */
+class Tenant extends TenantRepository
 {
-    //
+    /**
+     * Mass-assign fields for the database table.
+     *
+     * @var array
+     */
+    protected $fillable = [];
 }

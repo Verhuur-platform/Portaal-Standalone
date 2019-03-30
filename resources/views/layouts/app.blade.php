@@ -87,7 +87,7 @@
                         <i class="fe fe-calendar mr-1"></i> Verhuringen
                     </a>
 
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active('tenants*') }}" href="{{ route('tenants.dashboard') }}">
                         <i class="fe fe-user mr-1"></i> Huurders
                     </a>
                 </nav>
