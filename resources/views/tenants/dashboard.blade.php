@@ -37,7 +37,21 @@
                         @forelse ($tenants as $tenant)
                             <tr>
                                 <th scope="row"><span class="text-muted table-id">#{{ $tenant->id }}</span></th>
-                                <th>{{ $tenant->full_name }}</th>
+                                <td>{{ $tenant->full_name }}</td>
+                                <td>{{ ucfirst($tenant->email) }}</td>
+                                <td>{{ $tenant->tel_nr }}</td>
+
+                                <td> {{-- Option functions --}}
+                                    <span class="float-right">
+                                        <a href="" class="text-secondary text-decoration-none mr-1">
+                                            <i class="fe fe-eye"></i>
+                                        </a>
+
+                                        <a href="" class="text-danger text-decoration-none">
+                                            <i class="fe fe-trash-2"></i>
+                                        </a>
+                                    </span>
+                                </td> {{-- // Options functions --}}
                             </tr>
                         @empty {{-- No tenants found with the given criteria --}}
                             <tr>

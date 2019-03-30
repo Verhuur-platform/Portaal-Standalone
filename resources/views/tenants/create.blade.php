@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid pb-3">
-        <form method="POST" action="" class="shadow-sm border-0 card card-body">
+        <form method="POST" action="{{ route('tenants.store') }}" class="shadow-sm border-0 card card-body">
             <h6 class="border-bottom border-gray pb-1 mb-3">Huurder toevoegen</h6>
             @csrf {{-- Form-field protection --}}
 

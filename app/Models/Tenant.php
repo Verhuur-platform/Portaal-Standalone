@@ -16,5 +16,5 @@ class Tenant extends TenantRepository
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['full_name', 'lastname', 'firstname', 'email', 'tel_nr'];
 }

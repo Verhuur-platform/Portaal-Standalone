@@ -26,7 +26,8 @@ Route::get('/home', [HomeController::class, 'indexBackend'])->name('home');
 
 // Tenant routes
 Route::get('/huurders', [DashboardController::class, 'index'])->name('tenants.dashboard');
-Route::get('/huurder/nieuw', [DashboardController::class, 'create'])->name('tenants.create');
+Route::get('/huurders/nieuw', [DashboardController::class, 'create'])->name('tenants.create');
+Route::post('/huurders/nieuw', [DashboardController::class, 'store'])->name('tenants.store');
 
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
