@@ -33,6 +33,7 @@ Route::post('/huurders/nieuw', [DashboardController::class, 'store'])->name('ten
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
 Route::get('/login/undo/{trashedUser}', [LoginsDashboardController::class, 'undoDeleteRoute'])->name('users.delete.undo');
+Route::get('/logins/nieuw', [LoginsDashboardController::class, 'create'])->name('users.create');
 Route::get('/logins/{filter?}', [LoginsDashboardController::class, 'index'])->name('users.index');
 
 // Account settings route

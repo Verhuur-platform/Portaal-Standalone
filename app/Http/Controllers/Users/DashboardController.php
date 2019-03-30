@@ -11,6 +11,7 @@ use Mpociot\Reanimate\ReanimateModels;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class DashboardController
@@ -46,6 +47,15 @@ class DashboardController extends Controller
 
         $users = $users->getUsersByRequest($filter);
         return view('users.dashboard', ['users' => $users->simplePaginate()]);
+    }
+
+    /**
+     * @todo Docbloc
+     */
+    public function create(Role $roles): Renderable
+    {
+        $roles = $roles->get(['name']);
+        return view('users.create', compact('roles'));
     }
 
     /**

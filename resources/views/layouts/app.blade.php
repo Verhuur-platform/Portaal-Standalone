@@ -40,7 +40,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="">
-                                <i class="fe fe-bell mr-1"></i>
+                                <i class="fe fe-bell"></i>
 
                                 <span style="margin-top: -.25rem;" class="badge ml-1 align-middle badge-pill badge-notifications">
                                     0
