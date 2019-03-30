@@ -46,7 +46,7 @@ class HomeController extends Controller
     public function indexBackend(User $users, Tenant $tenants, Lease $leases): Renderable
     {
         $counters = [
-            'leases'  => ['all' => $leases->count()],
+            'leases'  => ['all' => $leases->count()], //! TODO implement new lease counter.
             'users'   => ['all' => $users->count(), 'deactivated' => $users->onlyBanned()->count()],
             'tenants' => ['all' => $tenants->count(), 'today' => $tenants->whereDate('created_at', now())->count()],
         ];
