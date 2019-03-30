@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class HomeController
- * 
+ *
  * @package App\Http\Controllers
  */
 class HomeController extends Controller
@@ -26,11 +26,11 @@ class HomeController extends Controller
     }
 
     /**
-     * Display the welcome page of the application. 
-     * 
+     * Display the welcome page of the application.
+     *
      * @return Renderable
      */
-    public function indexFrontend(): Renderable 
+    public function indexFrontend(): Renderable
     {
         return view('auth.login');
     }
@@ -38,13 +38,16 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param  User     $users    The database model class for the users.
+     * @param  Tenant   $tenants  The database model class for the tenants.
+     * @param  Lease    $leases   The database model class for the leases.
      * @return Renderable
      */
-    public function indexBackend(User $user, Tenant $tenants): Renderable
+    public function indexBackend(User $users, Tenant $tenants, Lease $leases): Renderable
     {
         $counters = [
-            'leases'  => ['all' => Lease::count()],
-            'users'   => ['all' => $user->count(), 'deactivated' => $user->onlyBanned()->count()],
+            'leases'  => ['all' => $leases->count()],
+            'users'   => ['all' => $users->count(), 'deactivated' => $users->onlyBanned()->count()],
             'tenants' => ['all' => $tenants->count(), 'today' => $tenants->whereDate('created_at', now())->count()],
         ];
 
