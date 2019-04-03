@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Http\Requests\Users\LoginValidator;
 use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -50,12 +51,29 @@ class DashboardController extends Controller
     }
 
     /**
-     * @todo Docbloc
+     * Method for displaying the create view for a new user.
+     *
+     * @param  Role $roles The database model for all the ACL roles in the application.
+     * @return Renderable
      */
     public function create(Role $roles): Renderable
     {
         $roles = $roles->get(['name']);
         return view('users.create', compact('roles'));
+    }
+
+    /**
+     * Method for storing the new user in the application.
+     *
+     * @param  LoginValidator $input    The form request class that handles the validation.
+     * @param  User           $user     The model class for the logins in the application.
+     * @return RedirectResponse
+     */
+    public function store(LoginValidator $input, User $user): RedirectResponse
+    {
+        // TODO: User notification (email) with the password.
+        // TODO: Build up the validation class
+        // TODO: Create User and attach role.
     }
 
     /**

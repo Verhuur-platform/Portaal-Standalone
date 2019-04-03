@@ -4,12 +4,7 @@ namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * Class InformationValidator
- *
- * @package App\Http\Requests\Users
- */
-class InformationValidator extends FormRequest
+class LoginValidator extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,9 +13,6 @@ class InformationValidator extends FormRequest
      */
     public function authorize(): bool
     {
-        // Set to true because the authorization check happends
-        // On the controller action.
-
         return true;
     }
 

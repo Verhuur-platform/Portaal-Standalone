@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0">
-                    <div class="card-body">
+                    <div class="card-body shadow-sm">
                         <h5 class="text-danger pb-1 mb-3"><i class="fe mr-1 fe-lock"></i> Account is gedeactiveerd</h5>
 
                         <p class="card-text">
