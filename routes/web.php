@@ -29,6 +29,8 @@ Route::get('/huurders', [DashboardController::class, 'index'])->name('tenants.da
 Route::get('/huurders/nieuw', [DashboardController::class, 'create'])->name('tenants.create');
 Route::match(['get','delete'], '/huurders/verwijder/{tenant}', [DashboardController::class, 'destroy'])->name('tenants.delete');
 Route::post('/huurders/nieuw', [DashboardController::class, 'store'])->name('tenants.store');
+Route::get('/huurders/{tenant}', [DashboardController::class, 'show'])->name('tenants.show');
+Route::patch('/huurders/{tenant}', [DashboardController::class, 'update'])->name('tenants.update');
 
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');

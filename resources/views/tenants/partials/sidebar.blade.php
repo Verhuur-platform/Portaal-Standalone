@@ -1,5 +1,5 @@
 <div class="list-group list-group-transparent">
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('tenants.show', $tenant) }}" class="list-group-item list-group-item-action {{ active('tenants.show') }}">
         <i class="fe fe-info text-sgv-brown mr-3"></i> Informatie
     </a>
 

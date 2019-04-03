@@ -30,11 +30,46 @@ class TenantsValidator extends FormRequest
      */
     public function rules(): array
     {
+        switch ($this->getMethod()) {
+            case 'POST':    $methodRules = $this->getPostRules();   break;
+            case 'PATCH':   $methodRules = $this->getPatchRules();  break;
+            default:        $methodRules = [];
+        }
+
+        return array_merge($this->baseRules(), $methodRules);
+    }
+
+    /**
+     * The base rules for an validation class.
+     *
+     * @return array
+     */
+    private function baseRules(): array
+    {
         return [
             'firstname' => ['required', 'string', 'max:100'],
             'lastname'  => ['required', 'string', 'max:150'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:tenants'],
             'tel_nr'    => ['required', 'string', 'max:50'],
         ];
+    }
+
+    /**
+     * Validation rules for an PATCH request.
+     *
+     * @return array
+     */
+    public function getPatchRules(): array
+    {
+        return ['email' => ['required', 'string', 'email', 'max:255', 'unique:tenants,email,' . $this->tenant->id ]];
+    }
+
+    /**
+     * Validation rules for an POST request.
+     *
+     * @return array
+     */
+    private function getPostRules(): array
+    {
+        return ['email' => ['required', 'string', 'email', 'max:255', 'unique:tenants']];
     }
 }

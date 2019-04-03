@@ -39,7 +39,7 @@ class TenantRepository extends Model
     {
         if ($this->delete()) {
             $this->flashInfo($this->full_name . ' is verwijderd als huurder in de applicatie.');
-            Auth::user()->logActivity('Huurders', "Heeft {$tenant->full_name} verwijderd als huurder");
+            Auth::user()->logActivity('Huurders', "Heeft {$this->full_name} verwijderd als huurder");
         }
     }
 

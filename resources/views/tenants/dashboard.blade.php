@@ -43,7 +43,7 @@
 
                                 <td> {{-- Option functions --}}
                                     <span class="float-right">
-                                        <a href="" class="text-secondary text-decoration-none mr-1">
+                                        <a href="{{ route('tenants.show', $tenant) }}" class="text-secondary text-decoration-none mr-1">
                                             <i class="fe fe-eye"></i>
                                         </a>
 
