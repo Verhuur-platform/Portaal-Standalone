@@ -56,6 +56,8 @@
                             </option>
                         @endforeach
                     </select>
+
+                    @error('role') {{-- Valdation error partial --}}
                 </div>
             </div>
 

@@ -65,15 +65,23 @@ class DashboardController extends Controller
     /**
      * Method for storing the new user in the application.
      *
+     * @see \App\Observers\UserObserver::created() <- Register password and notifify the user.
+     *
      * @param  LoginValidator $input    The form request class that handles the validation.
      * @param  User           $user     The model class for the logins in the application.
      * @return RedirectResponse
      */
     public function store(LoginValidator $input, User $user): RedirectResponse
     {
-        // TODO: User notification (email) with the password.
-        // TODO: Build up the validation class
-        // TODO: Create User and attach role.
+        // Activity log happends on the UserObserver action.
+        $input->merge(['name' => "{$input->firstname} {$input->lastname}"]);
+
+        if ($user = $user->create($input->all())) {
+            $user->assignRole($input->role);
+            $user->flashSuccess("Er is een login aangemaakt voor <strong>{$user->name}</strong>");
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**
