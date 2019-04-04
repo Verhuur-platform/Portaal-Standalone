@@ -39,14 +39,34 @@
                                 <tr>
                                     <th scope="col">Auteur</th>
                                     <th scope="col">Titel</th>
+                                    <th scope="col">Aangemaakt op</th>
                                     <th scope="col">&nbsp;</th> {{-- Column for the function only --}}
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($notes as $note)
-                                @empty
                                     <tr>
-                                        <td colspan="3" class="table-no-results">
+                                        <td class="text-muted"><span class="table-id">{{ $note->author->name ?? 'Onbekend' }}</span></td>
+                                        <td>{{ $note->titel }}</td>
+                                        <td>{{ $note->created_at->format('d/m/Y') }}</td>
+
+
+                                        <td> {{-- Options column  --}}
+                                            <span class="float-right">
+                                                <a href="" class="text-decoration-none text-secondary mr-1">
+                                                    <i class="fe fe-eye"></i>
+                                                </a>
+
+                                                {{-- TODO register policy --}}
+                                                <a href="" class="@if ($currentUser->cannot('delete', $note)) disabled @endif text-decoration-none text-danger">
+                                                    <i class="fe fe-trash-2"></i>
+                                                </a>
+                                            </span>
+                                        </td> {{-- /// END options column --}}
+                                    </tr>
+                                @empty {{-- There are no notes for the tenant --}}
+                                    <tr>
+                                        <td colspan="4" class="table-no-results">
                                             <i class="icon fe fe-info mr-2"></i>
                                             Er zijn momenteel geen notities voor de huurder.
                                         </td>
