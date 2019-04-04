@@ -87,7 +87,7 @@
                         <i class="fe fe-calendar mr-1"></i> Verhuringen
                     </a>
 
-                    <a class="nav-link {{ active('tenants*') }}" href="{{ route('tenants.dashboard') }}">
+                    <a class="nav-link {{ active(['tenants*', 'tenant*']) }}" href="{{ route('tenants.dashboard') }}">
                         <i class="fe fe-user mr-1"></i> Huurders
                     </a>
                 </nav>
@@ -103,6 +103,13 @@
 
                     <div class="float-right">
                         <span class="copyright">v1.0.0</span>
+
+                        @if (app()->isLocal() && $currentUser->hasRole('webmaster'))
+                            <span class="copyright px-2">-</span>
+                            <span class="text-danger font-weight-bold">
+                                <i class="fe mr-1 fe-alert-triangle"></i> Lokale omgeving
+                            </span>
+                        @endif
                     </div>
                 </div>
             </footer>

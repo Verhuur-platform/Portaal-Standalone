@@ -7,7 +7,7 @@
         <i class="fe fe-file-text text-sgv-brown mr-3"></i> Facturatie gegevens
     </a>
 
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('tenant.notes', ['tenant' => $tenant]) }}" class="list-group-item list-group-item-action {{ active('tenant.notes*') }}">
         <i class="fe fe-edit-2 text-sgv-brown mr-3"></i> Notities
     </a>
 
