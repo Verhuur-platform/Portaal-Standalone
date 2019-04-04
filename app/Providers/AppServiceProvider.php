@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Note;
+use App\Observers\NoteObserver;
 use App\User;
 use App\Observers\UserObserver;
 use App\Composers\AccountComposer;
@@ -34,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
     {
         // Model Observers
         User::observe(UserObserver::class);
+        Note::observe(NoteObserver::class);
     }
 }

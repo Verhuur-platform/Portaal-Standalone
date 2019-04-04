@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Requests\Lease\TenantsNoteValidator;
 use App\Models\Tenant;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class NotesController
@@ -55,5 +57,24 @@ class NotesController extends Controller
     public function create(Tenant $tenant): Renderable
     {
         return view('tenants.notes.create', compact('tenant'));
+    }
+
+    /**
+     * Method for storing the note from the tenant in the application.
+     *
+     * @see \App\Observers\NoteObserver::created() <- Assign author to the note.
+     *
+     * @param  TenantsNoteValidator $input  The request class that handles the validation.
+     * @param  Tenant               $tenant The storage entity from the tenant.
+     * @return RedirectResponse
+     */
+    public function store(TenantsNoteValidator $input, Tenant $tenant): RedirectResponse
+    {
+        if ($tenant->notes()->create($input->all())) {
+            auth()->user()->logActivity('Huurders', "Heeft een notitie voor de huurder {$tenant->full_name} toegevoegd.");
+            $tenant->flashInfo('De notitie is toegevoegd');
+        }
+
+        return redirect()->route('tenant.notes.create', $tenant);
     }
 }

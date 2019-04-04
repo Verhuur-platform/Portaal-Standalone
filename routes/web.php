@@ -35,6 +35,7 @@ Route::patch('/huurders/{tenant}', [DashboardController::class, 'update'])->name
 
 // Tenant notes route
 Route::get('/huurder/notities/{tenant}/nieuw', [NotesController::class, 'create'])->name('tenant.notes.create');
+Route::post('/huurder/notities/{tenant}', [NotesController::class, 'store'])->name('tenant.notes.store');
 Route::get('/huurder/notities/{tenant}/{filter?}', [NotesController::class, 'index'])->name('tenant.notes');
 
 // Login dashboard routes 

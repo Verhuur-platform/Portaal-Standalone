@@ -22,7 +22,7 @@
     <div class="container-fluid pb-3">
         <div class="row">
             <div class="col-9"> {{-- Content --}}
-                <form action="" method="POST" class="card card-body shadow-sm border-0">
+                <form action="{{ route('tenant.notes.store', $tenant) }}" method="POST" class="card card-body shadow-sm border-0">
                     <h6 class="border-bottom border-gray pb-1 mb-3">Notitie toevoegen voor de huurder <strong>{{ $tenant->full_name }}</strong></h6>
                     @csrf {{-- Form field protection --}}
                     @include ('flash::message') {{-- Flash session view partial --}}
@@ -37,7 +37,7 @@
 
                         <div class="form-group col-12">
                             <label for="content">Beschrijving <span class="text-danger">*</span></label>
-                            <textarea id="content" rows="4" class="form-control @error('content', 'is-invalid')" placeholder="Notitie">{{ old('content') }}</textarea>
+                            <textarea id="content" rows="4" class="form-control @error('content', 'is-invalid')" @input('content') `placeholder="Notitie">{{ old('content') }}</textarea>
                             @error('content')
                         </div>
                     </div>
