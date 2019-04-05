@@ -53,11 +53,14 @@
 
                                         <td> {{-- Options column  --}}
                                             <span class="float-right">
-                                                <a href="" class="text-decoration-none text-secondary mr-1">
+                                                <a href="" class="text-decoration-none text-secondary mr-2">
                                                     <i class="fe fe-eye"></i>
                                                 </a>
 
-                                                {{-- TODO register policy --}}
+                                                <a href="" class="@if ($currentUser->cannot('update', $note)) disabled @endif text-decoration-none mr-1 text-secondary">
+                                                    <i class="fe fe-edit-2"></i>
+                                                </a>
+
                                                 <a href="" class="@if ($currentUser->cannot('delete', $note)) disabled @endif text-decoration-none text-danger">
                                                     <i class="fe fe-trash-2"></i>
                                                 </a>
