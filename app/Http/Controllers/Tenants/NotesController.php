@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Tenants;
 use App\Http\Requests\Lease\TenantsNoteValidator;
 use App\Models\Tenant;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Database\Eloquent\Builder;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Models\Note;
 
 /**
  * Class NotesController
@@ -36,9 +36,8 @@ class NotesController extends Controller
     public function index(Tenant $tenant, ?string $filter = null): Renderable
     {
         if ($filter === 'auteur') {
-            $notes = $tenant->whereHas('notes', function (Builder $query): void {
-                $query->whereAuthorId(auth()->user()->id);
-            })->simplePaginate();
+            $matchThese = [['notable_type', 'App\Models\Tenant'], ['notable_id', $tenant->id], ['author_id', auth()->user()->id]];
+            $notes = Note::where($matchThese)->simplePaginate();
         }
 
         else {

@@ -23,7 +23,7 @@ class UserObserver
     {
         $password = Str::random(8);
 
-        if ($user->update(['password' => $password])) {
+        if (auth()->check() && $user->update(['password' => $password])) {
             auth()->user()->logActivity('Logins', "Heeft een login aangemaakt voor {$user->name}");
             $user->notify((new LoginCreated($password))->delay(now()->addMinute()));
         }
