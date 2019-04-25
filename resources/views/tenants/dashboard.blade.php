@@ -23,7 +23,7 @@
 
         <div class="card">
             <div class="table-responsive">
-                <table class="table @if(count($tenants) > 0) table-hover @endif mb-0 card-table table-vcenter text-nowrap">
+                <table class="table mb-0 card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -43,7 +43,7 @@
 
                                 <td> {{-- Option functions --}}
                                     <span class="float-right">
-                                        <a href="" class="text-secondary text-decoration-none mr-1">
+                                        <a href="{{ route('tenants.show', $tenant) }}" class="text-secondary text-decoration-none mr-1">
                                             <i class="fe fe-eye"></i>
                                         </a>
 

@@ -2,10 +2,12 @@
 
 namespace App\Repositories;
 
+use App\Models\Note;
 use App\Models\Tenant;
 use App\Traits\FlashMessenger;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -16,6 +18,16 @@ use Illuminate\Support\Facades\Auth;
 class TenantRepository extends Model
 {
     use FlashMessenger;
+
+    /**
+     * Get all of the post's comments.
+     *
+     * @return MorphMany
+     */
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable');
+    }
 
     /**
      * Get the tenants by the given group. Defaults to all users.
@@ -39,7 +51,7 @@ class TenantRepository extends Model
     {
         if ($this->delete()) {
             $this->flashInfo($this->full_name . ' is verwijderd als huurder in de applicatie.');
-            Auth::user()->logActivity('Huurders', "Heeft {$tenant->full_name} verwijderd als huurder");
+            Auth::user()->logActivity('Huurders', "Heeft {$this->full_name} verwijderd als huurder");
         }
     }
 

@@ -13,6 +13,8 @@ class LoginValidator extends FormRequest
      */
     public function authorize(): bool
     {
+        // Authorization is set to true because check mainly happend on
+        // The controller action class.
         return true;
     }
 
@@ -25,7 +27,9 @@ class LoginValidator extends FormRequest
     {
         return [
             'firstname' => ['required', 'string', 'max:50'],
-            'lastname'  => ['required', 'string', 'max:50']
+            'lastname'  => ['required', 'string', 'max:50'],
+            'role'      => ['required', 'string'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ];
     }
 }

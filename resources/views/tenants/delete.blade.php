@@ -3,8 +3,8 @@
 @section('content')
     <div class="container-fluid py-3">
         <div class="page-header">
-            <h1 class="page-title">Huurders</h1>
-            <div class="page-subtitle">{{ $tenant->full_name }} verwijderen</div>
+            <h1 class="page-title">{{ $tenant->full_name }}</h1>
+            <div class="page-subtitle">verwijderen als huurder</div>
 
             <div class="page-options d-flex">
                 <a href="{{ route('tenants.dashboard') }}" class="btn btn-secondary shadow-sm">

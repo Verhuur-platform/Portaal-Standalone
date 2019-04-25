@@ -67,9 +67,32 @@ class DashboardController extends Controller
         return redirect()->route('tenants.dashboard');
     }
 
+    /**
+     * Method for displaying an tenant in the application.
+     *
+     * @param  Tenant $tenant The database resource entity from the given tenant.
+     * @return Renderable
+     */
     public function show(Tenant $tenant): Renderable
     {
+        return view('tenants.show', compact('tenant'));
+    }
 
+    /**
+     * Method for updating the tenant his information in the portal.
+     *
+     * @param  TenantsValidator $input   The form request class that handles all the calidation logic.
+     * @param  Tenant           $tenant  The database resource from the given tenant.
+     * @return RedirectResponse
+     */
+    public function update(TenantsValidator $input, Tenant $tenant): RedirectResponse
+    {
+        if ($tenant->update($input->all())) {
+            auth()->user('Huurders', "Heeft de informatie van {$tenant->full_name} aangepast in de applicatie.");
+            $tenant->flashSuccess("De informatie van {$tenant->full_name} is aangepast!");
+        }
+
+        return redirect()->route('tenants.show', $tenant);
     }
 
     /**
@@ -77,8 +100,8 @@ class DashboardController extends Controller
      *
      * @throws \Exception <- When no tenant is found in the application.
      *
-     * @param
-     * @param  Tenant $tenant The resource entity from the given tenant.
+     * @param  Request  $request    The request class for mapping all the request information.
+     * @param  Tenant   $tenant     The resource entity from the given tenant.
      * @return Renderable|RedirectResponse
      */
     public function destroy(Request $request, Tenant $tenant)
