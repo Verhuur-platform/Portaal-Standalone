@@ -11,7 +11,7 @@
                     </span>
 
                     <div>
-                        <h5 class="m-0">0 <small>Verhuringen</small></h5>
+                        <h5 class="m-0">{{ $counters['leases']['all'] }} <small>Verhuringen</small></h5>
                         <small class="text-muted">0 nieuwe aanvragen</small>
                     </div>
                 </div>
@@ -26,8 +26,8 @@
                     </span>
 
                     <div>
-                        <h5 class="m-0">0 <small>Gebruikers</small></h5>
-                        <small class="text-muted">0 gedactiveerd</small>
+                        <h5 class="m-0">{{ $counters['users']['all'] }} <small>Gebruikers</small></h5>
+                        <small class="text-muted">Waarvan {{ $counters['users']['deactivated'] }} gedactiveerd</small>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                     </span>
 
                     <div>
-                        <h5 class="m-0">0 <small>Huurders</small></h5>
-                        <small class="text-muted">0 toegevoegd vandaag</small>
+                        <h5 class="m-0">{{ $counters['tenants']['all'] }} <small>Huurders</small></h5>
+                        <small class="text-muted">{{ $counters['tenants']['today'] }} toegevoegd vandaag</small>
                     </div>
                 </div>
             </div>

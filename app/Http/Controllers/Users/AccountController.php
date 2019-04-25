@@ -48,6 +48,14 @@ class AccountController extends Controller
         return view('account.security', ['user' => auth()->user()]);
     }
 
+    /**
+     * Method for updating the account information.
+     *
+     * @todo Fill in the validator class.
+     *
+     * @param  InformationValidator $input
+     * @return RedirectResponse
+     */
     public function updateInformation(InformationValidator $input): RedirectResponse
     {
         $user = auth()->user();

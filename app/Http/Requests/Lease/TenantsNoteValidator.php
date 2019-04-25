@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests\Lease;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class InformationValidator
+ * Class TenantsNoteValidator
  *
- * @package App\Http\Requests\Users
+ * @package App\Http\Requests\Lease
  */
-class InformationValidator extends FormRequest
+class TenantsNoteValidator extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,8 +18,8 @@ class InformationValidator extends FormRequest
      */
     public function authorize(): bool
     {
-        // Set to true because the authorization check happends
-        // On the controller action.
+        // No authorization check needed here because the check
+        // Mainly happen on the controller action class.
 
         return true;
     }
@@ -32,8 +32,8 @@ class InformationValidator extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => ['required', 'string', 'max:50'],
-            'lastname'  => ['required', 'string', 'max:50']
+            'titel' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
         ];
     }
 }

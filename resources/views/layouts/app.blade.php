@@ -23,7 +23,7 @@
     <body>
         <div id="app">
             <nav class="navbar navbar-expand-lg navbar-dark bg-brown">
-                <img src="{{ asset('img/logo.jpg') }}" width="25" height="25" class="mr-3 rounded shadow-lg d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
+                <img src="{{ asset('img/logo.png') }}" width="25" height="25" class="mr-3 rounded shadow-lg d-inline-block align-top" alt="{{ config('app.name', 'Laravel') }}">
                 <a class="navbar-brand mr-auto mr-lg-0" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }} - Verhuurportaal
                 </a>
@@ -40,7 +40,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="">
-                                <i class="fe fe-bell mr-1"></i>
+                                <i class="fe fe-bell"></i>
 
                                 <span style="margin-top: -.25rem;" class="badge ml-1 align-middle badge-pill badge-notifications">
                                     0
@@ -87,7 +87,7 @@
                         <i class="fe fe-calendar mr-1"></i> Verhuringen
                     </a>
 
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active(['tenants*', 'tenant*']) }}" href="{{ route('tenants.dashboard') }}">
                         <i class="fe fe-user mr-1"></i> Huurders
                     </a>
                 </nav>
@@ -103,6 +103,13 @@
 
                     <div class="float-right">
                         <span class="copyright">v1.0.0</span>
+
+                        @if (app()->isLocal() && $currentUser->hasRole('webmaster'))
+                            <span class="copyright px-2">-</span>
+                            <span class="text-danger font-weight-bold">
+                                <i class="fe mr-1 fe-alert-triangle"></i> Lokale omgeving
+                            </span>
+                        @endif
                     </div>
                 </div>
             </footer>

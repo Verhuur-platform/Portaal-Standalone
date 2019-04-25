@@ -7,7 +7,7 @@
             <div class="page-subtitle">Beheerspaneel</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn shadow-sm btn-secondary mr-2">
+                <a href="{{ route('users.create') }}" class="btn shadow-sm btn-secondary mr-2">
                     <i class="fe fe-user-plus"></i>
                 </a>
 
@@ -39,7 +39,7 @@
 
         <div class="card">
             <div class="table-responsive">
-                <table class="table @if (count($users) > 0) table-hover @endif mb-0 card-table table-vcenter text-nowrap">
+                <table class="table mb-0 card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

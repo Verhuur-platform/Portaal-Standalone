@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use App\Http\Requests\Users\LoginValidator;
 use Gate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use Mpociot\Reanimate\ReanimateModels;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use Spatie\Permission\Models\Role;
 
 /**
  * Class DashboardController
@@ -46,6 +48,40 @@ class DashboardController extends Controller
 
         $users = $users->getUsersByRequest($filter);
         return view('users.dashboard', ['users' => $users->simplePaginate()]);
+    }
+
+    /**
+     * Method for displaying the create view for a new user.
+     *
+     * @param  Role $roles The database model for all the ACL roles in the application.
+     * @return Renderable
+     */
+    public function create(Role $roles): Renderable
+    {
+        $roles = $roles->get(['name']);
+        return view('users.create', compact('roles'));
+    }
+
+    /**
+     * Method for storing the new user in the application.
+     *
+     * @see \App\Observers\UserObserver::created() <- Register password and notifify the user.
+     *
+     * @param  LoginValidator $input    The form request class that handles the validation.
+     * @param  User           $user     The model class for the logins in the application.
+     * @return RedirectResponse
+     */
+    public function store(LoginValidator $input, User $user): RedirectResponse
+    {
+        // Activity log happends on the UserObserver action.
+        $input->merge(['name' => "{$input->firstname} {$input->lastname}"]);
+
+        if ($user = $user->create($input->all())) {
+            $user->assignRole($input->role);
+            $user->flashSuccess("Er is een login aangemaakt voor <strong>{$user->name}</strong>");
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**
