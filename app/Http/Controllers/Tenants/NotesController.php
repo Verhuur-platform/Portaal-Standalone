@@ -76,4 +76,16 @@ class NotesController extends Controller
 
         return redirect()->route('tenant.notes.create', $tenant);
     }
+
+    /**
+     * Method for displaying the edit view from a note. 
+     * 
+     * @param  Note $note   The storage entity from the given note. 
+     * @return Renderable 
+     */
+    public function edit(Note $note): Renderable 
+    {
+        $this->authorize('update', $note);
+        return view('tenants.notes.edit', compact('note'));
+    }
 }
