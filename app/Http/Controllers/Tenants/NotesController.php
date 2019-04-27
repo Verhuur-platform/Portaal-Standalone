@@ -88,4 +88,23 @@ class NotesController extends Controller
         $this->authorize('update', $note);
         return view('tenants.notes.edit', compact('note'));
     }
+
+    /**
+     * Method for update a note from the tenant in the application.
+     * 
+     * @param  TenantsNoteValidator $input  The form request class that holds all the request information. 
+     * @param  Note                 $note   The resource entity from the given note.
+     * @return RedirectResponse 
+     */
+    public function update(TenantsNoteValidator $input, Note $note): RedirectResponse 
+    {
+        $this->authorize('update', $note);
+    
+        if ($note->update($input->all())) { // The note has been updated in the application. 
+            $input->user()->logActivity('Notities', "Heeft een notitie aangepast van de huurder {$note->notable->full_name}.");
+            flash('De notitie is aangepast in het verhuur portaal.');
+        }
+
+        return redirect()->route('tenant.notes.edit', $note);
+    }
 }

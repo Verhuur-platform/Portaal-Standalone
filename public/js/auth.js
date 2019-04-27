@@ -36685,7 +36685,7 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Gebruiker\Documents\sgv-hackton\resources\js\auth.js */"./resources/js/auth.js");
+module.exports = __webpack_require__(/*! C:\Users\Gebruiker\Documents\SGV-Hackaton\resources\js\auth.js */"./resources/js/auth.js");
 
 
 /***/ })

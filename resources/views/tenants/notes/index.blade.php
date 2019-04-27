@@ -57,7 +57,7 @@
                                                     <i class="fe fe-eye"></i>
                                                 </a>
 
-                                                <a href="" class="@if ($currentUser->cannot('update', $note)) disabled @endif text-decoration-none mr-1 text-secondary">
+                                                <a href="{{ route('tenant.notes.edit', $note) }}" class="@if ($currentUser->cannot('update', $note)) disabled @endif text-decoration-none mr-1 text-secondary">
                                                     <i class="fe fe-edit-2"></i>
                                                 </a>
 

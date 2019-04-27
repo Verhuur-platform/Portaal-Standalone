@@ -34,8 +34,10 @@ Route::get('/huurders/{tenant}', [DashboardController::class, 'show'])->name('te
 Route::patch('/huurders/{tenant}', [DashboardController::class, 'update'])->name('tenants.update');
 
 // Tenant notes route
+Route::get('/huurder/notities/wijzig/{note}', [NotesController::class, 'edit'])->name('tenant.notes.edit');
 Route::get('/huurder/notities/{tenant}/nieuw', [NotesController::class, 'create'])->name('tenant.notes.create');
 Route::post('/huurder/notities/{tenant}', [NotesController::class, 'store'])->name('tenant.notes.store');
+Route::put('/huurder/notities/{note}', [NotesController::class, 'update'])->name('tenant.notes.update');
 Route::get('/huurder/notities/{tenant}/{filter?}', [NotesController::class, 'index'])->name('tenant.notes');
 
 // Login dashboard routes 

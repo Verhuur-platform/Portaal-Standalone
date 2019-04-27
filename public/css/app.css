@@ -1123,11 +1123,15 @@
   }
 }
 
+.card-header-overview > a:hover {
+  color: #cd201f;
+}
+
 .card-header-overview {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   padding-left: 1.5rem;
-  padding-right: 1rem;
+  padding-right: 1.5rem;
   margin-bottom: 0;
   background-color: #bdd732;
   border-bottom: 1px solid #bcd62f;

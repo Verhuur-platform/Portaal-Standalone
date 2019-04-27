@@ -52,6 +52,10 @@
     <div class="card">
         <div class="card-header-overview">
             <span class="text-sgv-brown" style="font-weight:650;"><i class="fe fe-calendar mr-1"></i> Nieuwe aanvragen</span>
+
+            <a href="{{ route('lease.dashboard') }}" style="font-weight:650;" class="text-decoration-none text-sgv-brown float-right">
+                <i class="fe fe-list mr-1"></i> Alle verhuringen
+            </a>
         </div>
         <div class="table-responsive">
             <table class="table card-table table-vcenter mb-0 text-nowrap">
