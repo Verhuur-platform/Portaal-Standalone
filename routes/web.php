@@ -39,6 +39,7 @@ Route::get('/huurder/notities/{tenant}/nieuw', [NotesController::class, 'create'
 Route::post('/huurder/notities/{tenant}', [NotesController::class, 'store'])->name('tenant.notes.store');
 Route::put('/huurder/notities/{note}', [NotesController::class, 'update'])->name('tenant.notes.update');
 Route::get('/huurder/notities/{tenant}/{filter?}', [NotesController::class, 'index'])->name('tenant.notes');
+Route::get('/huurder/notitie/{note}', [NotesController::class, 'show'])->name('tenant.notes.show');
 
 // Login dashboard routes 
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');

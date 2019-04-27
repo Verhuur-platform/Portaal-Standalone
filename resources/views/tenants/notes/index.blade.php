@@ -53,7 +53,7 @@
 
                                         <td> {{-- Options column  --}}
                                             <span class="float-right">
-                                                <a href="" class="text-decoration-none text-secondary mr-2">
+                                                <a href="{{ route('tenant.notes.show', $note) }}" class="text-decoration-none text-secondary mr-2">
                                                     <i class="fe fe-eye"></i>
                                                 </a>
 

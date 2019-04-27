@@ -40,11 +40,24 @@ class NotesController extends Controller
             $notes = Note::where($matchThese)->simplePaginate();
         }
 
+        // Get all the notes that are attached to the tenant. 
+        // We also paginate them to reduce the view size in the application. 
         else {
             $notes = $tenant->notes()->simplePaginate();
         }
 
         return view('tenants.notes.index', compact('tenant', 'notes'));
+    }
+
+    /**
+     * Method to display an note in the application. 
+     * 
+     * @param  Note $note   The resource entity from the given note.   
+     * @return Renderable 
+     */
+    public function show(Note $note): Renderable 
+    {
+        return view('tenants.notes.show', compact('note'));
     }
 
     /**
