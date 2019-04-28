@@ -61,7 +61,7 @@
                                                     <i class="fe fe-edit-2"></i>
                                                 </a>
 
-                                                <a href="" class="@if ($currentUser->cannot('delete', $note)) disabled @endif text-decoration-none text-danger">
+                                                <a href="{{ route('tenant.notes.delete', $note) }}" class="@if ($currentUser->cannot('delete', $note)) disabled @endif text-decoration-none text-danger">
                                                     <i class="fe fe-trash-2"></i>
                                                 </a>
                                             </span>

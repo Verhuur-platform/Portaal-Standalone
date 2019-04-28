@@ -120,4 +120,21 @@ class NotesController extends Controller
 
         return redirect()->route('tenant.notes.edit', $note);
     }
+
+    /**
+     * Method for deleting an tenant note in the application. 
+     * 
+     * @param  Note $note   The resource entity from the given note. 
+     * @return RedirectResponse 
+     */
+    public function destroy(Note $note): RedirectResponse 
+    {
+        $user = auth()->user(); 
+
+        if ($user->can('delete', $note) && $note->delete()) {
+            $user->logActivity('Notities', "Heeft een notitie van {$note->notable->full_name} verwijderd in het protaal.");
+        }
+
+        return redirect()->route('tenant.notes', $note->notable);
+    }
 }

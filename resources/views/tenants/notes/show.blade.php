@@ -39,7 +39,7 @@
                             @endif
 
                             @if ($currentUser->can('delete', $note)) {{-- Authenticated user is authorized to delete the note --}}
-                                <a href="" class="card-link text-decoration-none text-danger">
+                                <a href="{{ route('tenant.notes.delete', $note) }}" class="card-link text-decoration-none text-danger">
                                     <i class="fe fe-trash-2 mr-1"></i> Verwijder
                                 </a>
                             @endif
