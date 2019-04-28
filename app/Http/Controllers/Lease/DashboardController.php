@@ -27,6 +27,9 @@ class DashboardController extends Controller
     /**
      * Method for displaying the lease dashboard. 
      * 
+     * @todo Implement search function 
+     * @todo Implement the request filters on the view and backend.
+     * 
      * @param  Lease        $leases The database model instance for the leases. 
      * @param  null|string  $filter The filter name that needs to be applied. Defaults to null.
      * @return Renderable
@@ -35,5 +38,15 @@ class DashboardController extends Controller
     {
         $leases = $leases->getByGroup($filter)->simplePaginate();
         return view('lease.dashboard', compact('leases'));
+    }
+
+    /**
+     * Method for displaying the lease create view. 
+     * 
+     * @return Renderable 
+     */
+    public function create(): Renderable 
+    {
+        return view('lease.create');
     }
 }

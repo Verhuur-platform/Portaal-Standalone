@@ -7,7 +7,7 @@
             <div class="page-subtitle">Beheerspaneel</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn shadow-sm btn-secondary mr-2">
+                <a href="{{ route('lease.create') }}" class="btn shadow-sm btn-secondary mr-2">
                     <i class="fe fe-plus"></i>
                 </a>
 

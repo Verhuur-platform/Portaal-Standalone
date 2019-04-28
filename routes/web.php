@@ -61,4 +61,5 @@ Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name(
 Route::get('/gedeactiveerd', [LockController::class, 'index'])->name('user.deactivated');
 
 // Lease routes
+Route::get('/verhuringen/nieuw', [LeasesDashboardController::class, 'create'])->name('lease.create');
 Route::get('/verhuringen/{filter?}', [LeasesDashboardController::class, 'index'])->name('lease.dashboard');
