@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Database data seeders
+        $this->call(StatusTableSeeder::class);
         $this->call(AclTableSeeder::class);
     }
 

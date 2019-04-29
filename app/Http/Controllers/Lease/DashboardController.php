@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use App\Models\Lease;
+use App\User;
+use App\Models\Status;
 
 /**
  * Class DashboardController
@@ -45,8 +47,11 @@ class DashboardController extends Controller
      * 
      * @return Renderable 
      */
-    public function create(): Renderable 
+    public function create(User $users): Renderable 
     {
-        return view('lease.create');
+        $users     = User::get(['id', 'name']);
+        $statusses = Status::all();
+
+        return view('lease.create', compact('users', 'statusses'));
     }
 }

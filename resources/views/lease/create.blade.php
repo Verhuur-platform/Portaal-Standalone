@@ -63,6 +63,10 @@
             <div class="form-row">
                 <div class="col-3">
                     <h5>Informatie verhuring</h5>
+                    <p class="card-text text-secondary small">
+                        <i class="fe font-weight-bold fe-info mr-2"></i>
+                        Indien er geen opvolger word aangeduid. Zal de gebruiker die de verhuring registreerd aangeduid worden als opvolger.
+                    </p>
                 </div>
 
                 <div class="offset-1 col-8">
@@ -77,6 +81,44 @@
                             <label for="endDate">Eind datum <span class="text-danger">*</span></label>
                             <input type="date" class="form-control @error('end_date', 'is-invalid')" id="endDate">
                             @error('end_date')
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="persons">Aantal personen <span class="text-danger">*</span></label>
+                            <input type="text" id="persons" class="form-control @error('persons', 'is-invalid')" placeholder="Aantal personen" @input('persons')>
+                            @error('persons')
+                        </div>
+                        
+                        <div class="form-group col-4">
+                            <label for="followUp">Opgevolgd door</label>
+
+                            <select id="followUp" class="custom-select @error('follower_id', 'is-invalid')" @input('follower_id')>
+                                <option value="">-- opvolger --</option>
+
+                                @foreach ($users as $user) {{-- Loop through the users --}}
+                                    <option value="{{ $user->id }}" @if ($user->id === old('follower_id')) selected @endif>
+                                        {{ ucfirst($user->name) }}
+                                    </option>
+                                @endforeach {{-- /// END loop --}}
+                            </select>
+
+                            @error('follower_id') {{-- Validation error view partial --}}
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label id="status">Status <span class="text-danger">*</span></label>
+
+                            <select id="status" class="custom-select @error('status', 'is-invalid')" @input('status')>
+                                <option value="">-- status --</option>
+                            
+                                @foreach ($statusses as $status) {{-- Status loop --}}
+                                    <option value="{{ $status->id }}" @if ($status->id === old('status')) selected @endif>
+                                        {{ ucfirst($status->name) }}
+                                    </option>
+                                @endforeach {{-- /// END status loop --}}
+                            </select>
+
+                            @error('status_id') {{-- Validation error view partial --}}
                         </div>
                     </div>
                 </div>
