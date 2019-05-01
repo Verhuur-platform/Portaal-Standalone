@@ -19,12 +19,16 @@ class CreateLeasesTable extends Migration
         Schema::create('leases', function (Blueprint $table): void {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tenant_id')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable();
+            $table->unsignedBigInteger('successor_id')->nullable();
             $table->integer('persons'); 
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
 
             // Foreign keys
+            $table->foreign('successor_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('status_id')->references('id')->on('statuses')->ondelete('set null');
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }

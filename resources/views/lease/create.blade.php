@@ -15,7 +15,7 @@
     </div>
 
     <div class="container-fluid pb-3">
-        <form action="" method="post" class="card card-body border-0 shadow-sm">
+        <form action="{{ route('lease.store') }}" method="post" class="card card-body border-0 shadow-sm">
             @csrf {{-- Form field protection --}}
             <h6 class="border-bottom border-gray pb-1 mb-4">Verhuring toevoegen</h6>
 
@@ -73,13 +73,13 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="startDate">Start datum <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control @error('start_date', 'is-invalid')" id="startDate">
+                            <input type="date" class="form-control @error('start_date', 'is-invalid')" id="startDate" @input('start_date')>
                             @error('start_date')
                         </div>
 
                         <div class="form-group col-6">
                             <label for="endDate">Eind datum <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control @error('end_date', 'is-invalid')" id="endDate">
+                            <input type="date" class="form-control @error('end_date', 'is-invalid')" id="endDate" @input('end_date')>
                             @error('end_date')
                         </div>
 
@@ -112,13 +112,13 @@
                                 <option value="">-- status --</option>
                             
                                 @foreach ($statusses as $status) {{-- Status loop --}}
-                                    <option value="{{ $status->id }}" @if ($status->id === old('status')) selected @endif>
+                                    <option value="{{ $status->id }}" @if ($status->id == old('status')) selected @endif>
                                         {{ ucfirst($status->name) }}
                                     </option>
                                 @endforeach {{-- /// END status loop --}}
                             </select>
 
-                            @error('status_id') {{-- Validation error view partial --}}
+                            @error('status') {{-- Validation error view partial --}}
                         </div>
                     </div>
                 </div>

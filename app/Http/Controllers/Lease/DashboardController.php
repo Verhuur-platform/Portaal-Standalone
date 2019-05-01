@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Lease;
 
-use Illuminate\Http\Request;
+use App\Notifications\LeaseAssigned;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use App\Models\Lease;
 use App\User;
 use App\Models\Status;
+use App\Http\Requests\Lease\LeaseValidator;
+use App\Models\Tenant;
 
 /**
  * Class DashboardController
@@ -43,15 +46,44 @@ class DashboardController extends Controller
     }
 
     /**
-     * Method for displaying the lease create view. 
-     * 
+     * Method for displaying the lease create view.
+     *
+     * @param  User $users The database model class for the application users.
      * @return Renderable 
      */
     public function create(User $users): Renderable 
     {
-        $users     = User::get(['id', 'name']);
+        $users     = $users->get(['id', 'name']);
         $statusses = Status::all();
 
         return view('lease.create', compact('users', 'statusses'));
+    }
+
+    public function show(Lease $lease): Renderable
+    {
+
+    }
+
+    /**
+     * Method for storing an new lease in the application. 
+     * 
+     * @param  LeaseValidator $input    The form request instance that holds all the request information.
+     * @param  Tenant         $tenant   The database model class for the tenants in the application. 
+     * @param  Lease          $lease    The database model class for the leases in the application. 
+     * @return RedirectResponse 
+     */
+    public function store(LeaseValidator $input, Tenant $tenant, Lease $lease): RedirectResponse 
+    {
+        $tenant     = $tenant->getOrCreate($input);
+        $lease      = $lease->storeLease($tenant, $input);
+
+        if ($lease && $tenant) { // lease is created and tenant is found or created. 
+            if (! $this->getAuthenticatedUser()->is($lease->successor)) {
+                $when = now()->addMinute(1);
+                $lease->successor->notify((new LeaseAssigned($lease, $this->getAuthenticatedUser()))->delay($when));
+            }
+        }
+
+        return redirect()->route('lease.show', $lease);
     }
 }

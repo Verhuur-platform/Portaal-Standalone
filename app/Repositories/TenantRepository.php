@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /**
  * Class TenantRepository
@@ -53,6 +54,31 @@ class TenantRepository extends Model
             $this->flashInfo($this->full_name . ' is verwijderd als huurder in de applicatie.');
             Auth::user()->logActivity('Huurders', "Heeft {$this->full_name} verwijderd als huurder");
         }
+    }
+
+    /**
+     * Custom function for finding an tenant in the application or creating them. 
+     * 
+     * ->firstOrCreate(); is not used because we need logging and there is already 
+     * defined an ->createTenant() method in the application. 
+     * 
+     * @param  Request $input The reguest instance that holds all the request data.
+     * @return Tenant
+     */
+    public function getOrCreate(Request $input): Tenant 
+    {
+
+        $matchCriteria = [['firstname', $input->firstname], ['lastname', $input->lastname], ['email', $input->email]];
+        $tenant = $this->where($matchCriteria)->first();
+
+        // No tenant if found with the matching criteria in the application. 
+        // So we need to create on in the application. 
+        if (! $tenant) {
+            $input->merge(['full_name' => "{$input->firstname} {$input->lastname}"]);
+            return $this->createTenant($input->all());
+        } 
+
+        return $tenant;
     }
 
     /**

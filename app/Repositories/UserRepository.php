@@ -77,12 +77,14 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
         });
 
         return $query; // No matching filter is found. So return a builder instance without any scopes on it.
-    } 
+    }
 
     /**
-     * Method for deleting an user in the application. 
-     * 
-     * @param  Request $request The request information collection instance
+     * Method for deleting an user in the application.
+     *
+     * @throws \Exception
+     *
+     * @param Request $request The request information collection instance
      * @return void
      */
     public function deleteLogin(Request $request): void 
