@@ -13,6 +13,64 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~primer-blankslate/index.scss";
 
+.notification-avatar {
+  width: 32px;
+  height: 32px;
+}
+
+.notifications {
+  position: relative;
+  padding: 32px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  box-shadow: inset 0 0 10px rgba(27, 31, 35, 0.05);
+}
+
+.notifications code {
+  padding: 2px 5px 3px;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #eaecef;
+  border-radius: 3px;
+}
+
+.notifications-icon {
+  margin-right: 4px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  color: #a3aab1;
+}
+
+.blankslate-capped {
+  border-radius: 0 0 3px 3px;
+}
+
+.notifications-spacious {
+  padding: 80px 40px;
+}
+
+.notifications-narrow {
+  width: 485px;
+  margin: 0 auto;
+}
+
+.notifications-large h3 {
+  margin: 16px 0;
+  font-size: 20px;
+}
+
+.notifications-large p {
+  font-size: 16px;
+}
+
+.notifications-clean-background {
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
 .badge-notifications {
   @include badge-variant($sgv-green);
   color: $sgv-brown !important;

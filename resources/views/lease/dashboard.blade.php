@@ -17,7 +17,11 @@
                     </button>
 
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="">Alle verhuringen</a>
                         <a class="dropdown-item" href="">Nieuwe aanvragen</a>
+                        <a class="dropdown-item" href="">Optionele verhuringen</a>
+                        <a class="dropdown-item" href="">Bevestigde verhuringen</a>
+                        <a class="dropdown-item" href="">Afgelopen verhuringen</a>
                     </div>
                 </div>
 
@@ -47,6 +51,10 @@
                     </thead>
                     <tbody>
                         @forelse ($leases as $lease) {{-- There are leases found --}}
+                            <tr>
+                                <td><span class="text-muted table-id">#{{ $lease->id }}</span><td>
+                                <td>{{ $lease->status->name }}</td>
+                            </tr>
                         @empty {{-- No leases are found with the matching criteria --}}
                             <tr>
                                 <td colspan="7" class="table-no-results">

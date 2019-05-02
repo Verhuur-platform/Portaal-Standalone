@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\Tenants\DashboardController;
 use App\Http\Controllers\Tenants\NotesController;
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
@@ -65,3 +66,7 @@ Route::get('/verhuringen/nieuw', [LeasesDashboardController::class, 'create'])->
 Route::post('/verhuringen/nieuw', [LeasesDashboardController::class, 'store'])->name('lease.store');
 Route::get('/verhuring/{lease}', [LeasesDashboardController::class, 'show'])->name('lease.show');
 Route::get('/verhuringen/{filter?}', [LeasesDashboardController::class, 'index'])->name('lease.dashboard');
+
+// Notifications routes
+Route::get('/notificaties/lees-alles', [NotificationsController::class, 'markAll'])->name('notifications.markAll');
+Route::get('/notificaties/{type?}', [NotificationsController::class, 'index'])->name('notifications.index');

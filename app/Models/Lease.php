@@ -31,6 +31,16 @@ class Lease extends LeaseRepository
     }
 
     /**
+     * Data relation for the lease status.
+     *
+     * @return BelongsTo
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(Status::class);
+    }
+
+    /**
      * Data relation for the successor from the lease in the application.
      *
      * @return BelongsTo

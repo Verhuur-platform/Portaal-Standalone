@@ -41,7 +41,7 @@ class DashboardController extends Controller
      */
     public function index(Lease $leases, ?string $filter = null): Renderable
     {
-        $leases = $leases->getByGroup($filter)->simplePaginate();
+        $leases = $leases->getByGroup($filter)->where('end_date', '>', now())->simplePaginate();
         return view('lease.dashboard', compact('leases'));
     }
 
@@ -79,7 +79,7 @@ class DashboardController extends Controller
 
         if ($lease && $tenant) { // lease is created and tenant is found or created. 
             if (! $this->getAuthenticatedUser()->is($lease->successor)) {
-                $when = now()->addMinute(1);
+                $when = now()->addMinute();
                 $lease->successor->notify((new LeaseAssigned($lease, $this->getAuthenticatedUser()))->delay($when));
             }
         }
