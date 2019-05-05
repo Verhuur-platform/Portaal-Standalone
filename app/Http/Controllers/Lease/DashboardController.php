@@ -59,6 +59,12 @@ class DashboardController extends Controller
         return view('lease.create', compact('users', 'statusses'));
     }
 
+    /**
+     * Method for displaying the lease information in the application. 
+     * 
+     * @param  Lease $lease The resource entity from the lease in the application. 
+     * @return Renderable 
+     */
     public function show(Lease $lease): Renderable
     {
 
