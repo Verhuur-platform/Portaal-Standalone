@@ -17,11 +17,10 @@
                     </button>
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="">Alle verhuringen</a>
+                        <a class="dropdown-item" href="{{ route('lease.dashboard') }}">Alle verhuringen</a>
                         <a class="dropdown-item" href="">Nieuwe aanvragen</a>
                         <a class="dropdown-item" href="">Optionele verhuringen</a>
                         <a class="dropdown-item" href="">Bevestigde verhuringen</a>
-                        <a class="dropdown-item" href="">Afgelopen verhuringen</a>
                     </div>
                 </div>
 
@@ -46,7 +45,7 @@
                             <th>Periode</th>
                             <th>Aantal personen</th>
                             <th>Aangevraagd op</th>
-                            <th></th>
+                            <th>&nbsp;</th>{{-- Column for the options --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +53,15 @@
                             <tr>
                                 <td><span class="text-muted table-id">#{{ $lease->id }}</span><td>
                                 <td>{{ $lease->status->name }}</td>
+                                <td>{{ $lease->tenant->full_name }}</td>
+                                <td>{{ $lease->period }}</td>
+                                <td>{{ $lease->created_at->diffForHumans() }}</td>
+                                
+                                <td>
+                                    <span class="float-right">
+                                        <a href="" class="">
+                                    </span>
+                                </td>
                             </tr>
                         @empty {{-- No leases are found with the matching criteria --}}
                             <tr>

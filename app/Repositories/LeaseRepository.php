@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Models\Scopes\LeaseScopes;
 use App\Models\Tenant;
 use App\User;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\Lease;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -18,12 +18,35 @@ use Illuminate\Http\Request;
 class LeaseRepository extends Model
 {
     /**
+     * Method to register the builder instance with all the query scopes.
+     *
+     * @param \Illuminate\Database\Query\Builder $builder Database query builder instance
+     * @return LeaseScopes
+     */
+    public function newEloquentBuilder($builder): LeaseScopes
+    {
+        return new LeaseScopes($builder);
+    }
+
+    /**
+     * Method for getting the new lease requests that are displaying on the dashboard.
+     *
+     * @return mixed
+     */
+    public function dashboardResults()
+    {
+        return $this->whereHas('status', function ($query) {
+            $query->where('name', 'nieuwe aanvraag');
+        })->upcoming()->take(5)->get();
+    }
+
+    /**
      * Method for getting the leases by filter group.
      *
      * @param  string|null $filter The name of the filter that u want to apply.
-     * @return Builder
+     * @return LeaseScopes
      */
-    public function getByGroup(?string $filter = null): Builder
+    public function getByGroup(?string $filter = null): LeaseScopes
     {
         $leases = Lease::query();
         return $leases; // No matching filter is found. So return a builder instance without any scopes on it

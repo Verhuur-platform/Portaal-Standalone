@@ -45,12 +45,15 @@ class HomeController extends Controller
      */
     public function indexBackend(User $users, Tenant $tenants, Lease $leases): Renderable
     {
+        // TODO Format counters to view composer.
         $counters = [
             'leases'  => ['all' => $leases->count()], //! TODO implement new lease counter.
             'users'   => ['all' => $users->count(), 'deactivated' => $users->onlyBanned()->count()],
             'tenants' => ['all' => $tenants->count(), 'today' => $tenants->whereDate('created_at', now())->count()],
         ];
 
-        return view('home', compact('counters'));
+        $newLeases = $leases->dashboardResults();
+
+        return view('home', compact('counters', 'newLeases'));
     }
 }

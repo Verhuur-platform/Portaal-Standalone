@@ -21,6 +21,13 @@ class Lease extends LeaseRepository
     protected $fillable = ['persons', 'start_date', 'end_date', 'tenant_id', 'status_id'];
 
     /**
+     * Mutate database fields to date fields.
+     *
+     * @var array
+     */
+    protected $dates = ['start_date', 'end_date'];
+
+    /**
      * Data relation for the tenant from the lease. 
      * 
      * @return BelongsTo
@@ -48,5 +55,15 @@ class Lease extends LeaseRepository
     public function successor(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * ATtributes to create the lease period.
+     *
+     * @return string
+     */
+    public function getPeriodAttribute(): string
+    {
+        return "{$this->start_date->format('d/m/Y')} - {$this->end_date->format('d/m/Y')}";
     }
 }

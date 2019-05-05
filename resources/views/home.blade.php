@@ -66,24 +66,33 @@
                         <th>Periode</th>
                         <th>Aantal personen</th>
                         <th>Toegevoegd op</th>
-                        <th></th>
+                        <th>&nbsp;</th> {{-- Column field for the options only --}}
                     </tr>
                 </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-secondary table-id">#1</td>
-                            <td>Jan met de pet</td>
-                            <td>10/10/1995 - 10/10/1996</td>
-                            <td>45 personen</td>
-                            <td>05/10/1995</td>
-                            <td>
-                                <span class="float-right">
-                                    <a href="" class="text-secondary text-decoration-none">
-                                        <i class="fe fe-eye mr-1"></i> Bekijk
-                                    </a>
-                                </span>
-                            </td>
-                        <tr>
+                        @forelse ($newLeases as $lease)
+                            <tr>
+                                <td class="text-secondary table-id">#{{ $lease->id }}</td>
+                                <td>{{ $lease->tenant->full_name }}</td>
+                                <td>{{ $lease->period }}</td>
+                                <td>{{ $lease->persons }} Personen</td>
+                                <td>{{ $lease->created_at->diffForHumans() }}</td>
+                                <td>
+                                    <span class="float-right">
+                                        <a href="{{ route('lease.show', $lease) }}" class="text-secondary text-decoration-none">
+                                            <i class="fe fe-eye mr-1"></i> Bekijk
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="table-no-results">
+                                    <i class="icon fe fe-info mr-2"></i>
+                                    Er zijn momenteel geen nieuwe verhuringen aangevraagd.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
