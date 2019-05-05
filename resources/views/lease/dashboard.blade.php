@@ -51,15 +51,18 @@
                     <tbody>
                         @forelse ($leases as $lease) {{-- There are leases found --}}
                             <tr>
-                                <td><span class="text-muted table-id">#{{ $lease->id }}</span><td>
-                                <td>{{ $lease->status->name }}</td>
+                                <td><span class="text-muted table-id">#{{ $lease->id }}</span></td>
+                                <td><span class="badge {{ $lease->status->css_class }}">{{ $lease->status->name }}</span></td>
                                 <td>{{ $lease->tenant->full_name }}</td>
                                 <td>{{ $lease->period }}</td>
+                                <td>{{ $lease->persons }} personen</td>
                                 <td>{{ $lease->created_at->diffForHumans() }}</td>
                                 
                                 <td>
                                     <span class="float-right">
-                                        <a href="" class="">
+                                        <a href="{{ route('lease.show', $lease) }}" class="text-decoration-none text-secondary">
+                                            <i class="fe fe-eye"></i>
+                                        </a>
                                     </span>
                                 </td>
                             </tr>

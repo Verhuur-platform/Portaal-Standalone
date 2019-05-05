@@ -16,8 +16,8 @@ class StatusTableSeeder extends Seeder
      */
     public function run(Status $statusEntity): void
     {
-        $statusEntity->firstOrCreate(['name' => 'Optie']);
-        $statusEntity->firstOrCreate(['name' => 'Nieuwe aanvraag']);
-        $statusEntity->firstOrCreate(['name' => 'Bevestigd']);
+        $statusEntity->firstOrCreate(['name' => 'Optie', 'css_class' => 'label-lease-option']);
+        $statusEntity->firstOrCreate(['name' => 'Nieuwe aanvraag', 'css_class' => 'label-lease-new']);
+        $statusEntity->firstOrCreate(['name' => 'Bevestigd', 'css_class' => 'label-lease-confirmed']);
     }
 }

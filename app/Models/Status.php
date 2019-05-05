@@ -16,5 +16,5 @@ class Status extends Model
      * 
      * @var array 
      */
-    protected $fillable = ['status'];
+    protected $fillable = ['status', 'css_class'];
 }
