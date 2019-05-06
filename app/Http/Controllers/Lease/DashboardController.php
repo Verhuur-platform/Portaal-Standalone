@@ -67,7 +67,10 @@ class DashboardController extends Controller
      */
     public function show(Lease $lease): Renderable
     {
+        $cantEdit = $this->getAuthenticatedUser()->cannot('update', $lease);
+        $statuses = Status::all()->pluck('name', 'id');
 
+        return view('lease.show', compact('lease', 'cantEdit', 'statuses'));
     }
 
     /**
