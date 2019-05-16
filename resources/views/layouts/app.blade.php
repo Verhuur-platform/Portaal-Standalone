@@ -58,12 +58,6 @@
                                     <i class="fe fe-sliders mr-1 text-secondary"></i> Instellingen
                                 </a>
 
-                                @hasanyrole('webmaster|ontwikkelaar')
-                                    <a class="dropdown-item" href="">
-                                        Admin paneel
-                                    </a>
-                                @endhasanyrole
-
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -95,6 +89,14 @@
 
                     <a class="nav-link {{ active(['tenants*', 'tenant*']) }}" href="{{ route('tenants.dashboard') }}">
                         <i class="fe fe-user mr-1"></i> Huurders
+                    </a>
+
+                    <a class="nav-link" href="">
+                        <i class="fe fe-home mr-1"></i> Lokalen
+                    </a> 
+
+                    <a class="nav-link" href="">
+                        <i class="fe fe-alert-triangle mr-1"></i> Werkpunten
                     </a>
                 </nav>
             </div>

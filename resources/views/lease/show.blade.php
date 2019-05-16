@@ -109,7 +109,7 @@
             </div> {{-- /// Content --}}
 
             <div class="col-md-3"> {{-- sidebar --}}
-                
+                @include ('lease.partials.sidenav', ['lease' => $lease])
             </div> {{-- /// Sidebar --}}
         </div>
     </div>
