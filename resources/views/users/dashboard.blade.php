@@ -82,11 +82,11 @@
                                                 <i class="fe fe-eye"></i>
                                             </a>
 
-                                            @if ($user->isNotBanned())
+                                            @if ($currentUser->can('create-lock', $user))
                                                 <a href="{{ route('users.lock', $user) }}" class="text-decoration-none @if ($currentUser->is($user)) disabled @endif text-secondary mr-1">
                                                     <i class="fe fe-lock"></i>
                                                 </a>
-                                            @else {{-- User is banned in the application --}}
+                                            @elseif($currentUser->can('remove-lock', $user)) {{-- User is banned in the application --}}
                                                 <a href="{{ route('users.unlock', $user) }}" class="text-decoration-none text-secondary mr-1">
                                                     <i class="fe fe-unlock"></i>
                                                 </a>

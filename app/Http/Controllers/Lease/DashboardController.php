@@ -41,7 +41,7 @@ class DashboardController extends Controller
      */
     public function index(Lease $leases, ?string $filter = null): Renderable
     {
-        $leases = $leases->getByGroup($filter)->where('end_date', '>', now())->simplePaginate();
+        $leases = $leases->getByGroup($filter)->simplePaginate();
         return view('lease.dashboard', compact('leases'));
     }
 

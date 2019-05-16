@@ -35,7 +35,7 @@ class UserPolicy
      */
     public function createLock(User $user, User $model): bool 
     {
-        return ! $this->sameUser($user, $model) && $model->isNotBanned();
+        return ! $this->sameUser($user, $model) && $model->isNotBanned() && $user->hasRole('webmaster');
     }
 
     /**
@@ -47,6 +47,6 @@ class UserPolicy
      */
     public function removeLock(User $user, User $model): bool 
     {
-        return ! $this->sameUser($user, $model) && $model->isBanned();
+        return ! $this->sameUser($user, $model) && $user->hasRole('webmaster') && $model->isBanned();
     }
 }

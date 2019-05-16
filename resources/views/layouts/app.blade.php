@@ -58,6 +58,12 @@
                                     <i class="fe fe-sliders mr-1 text-secondary"></i> Instellingen
                                 </a>
 
+                                @hasanyrole('webmaster|ontwikkelaar')
+                                    <a class="dropdown-item" href="">
+                                        Admin paneel
+                                    </a>
+                                @endhasanyrole
+
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
