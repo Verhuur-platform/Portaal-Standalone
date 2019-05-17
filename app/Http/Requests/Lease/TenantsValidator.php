@@ -31,10 +31,10 @@ class TenantsValidator extends FormRequest
     public function rules(): array
     {
         switch ($this->getMethod()) {
-            case 'POST':    
+            case 'POST':
                 $methodRules = $this->getPostRules();
                 break;
-            case 'PATCH':   
+            case 'PATCH':
                 $methodRules = $this->getPatchRules();
                 break;
             default:

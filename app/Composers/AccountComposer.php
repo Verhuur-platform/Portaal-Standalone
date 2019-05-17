@@ -1,16 +1,16 @@
-<?php 
+<?php
 
-namespace App\Composers; 
+namespace App\Composers;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\View\View;
 
 /**
- * Class LayoutComposer 
- * 
+ * Class LayoutComposer
+ *
  * @package App\Composers
  */
-class AccountComposer 
+class AccountComposer
 {
     /**
      * The guard implementation.
@@ -33,7 +33,7 @@ class AccountComposer
     /**
      * Bind data to the view.
      *
-     * @param  View $view The view builder instance. 
+     * @param  View $view The view builder instance.
      * @return void
      */
     public function compose(View $view): void

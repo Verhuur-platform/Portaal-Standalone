@@ -5,8 +5,8 @@ namespace App\Http\Requests\Users;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class LockValidator 
- * 
+ * Class LockValidator
+ *
  * @package App\Http\Requests\Users
  */
 class LockValidator extends FormRequest
@@ -16,9 +16,9 @@ class LockValidator extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool 
+    public function authorize(): bool
     {
-        // $this->user() = Currently authenticated user. 
+        // $this->user() = Currently authenticated user.
         return $this->user()->can('create-lock', $this->userEntity);
     }
 

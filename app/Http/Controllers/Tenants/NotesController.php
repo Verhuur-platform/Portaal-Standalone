@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Lease\TenantsNoteValidator;
+use App\Models\Note;
 use App\Models\Tenant;
 use Illuminate\Contracts\Support\Renderable;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Note;
 
 /**
  * Class NotesController
@@ -40,8 +40,8 @@ class NotesController extends Controller
             $notes = Note::where($matchThese)->simplePaginate();
         }
 
-        // Get all the notes that are attached to the tenant. 
-        // We also paginate them to reduce the view size in the application. 
+        // Get all the notes that are attached to the tenant.
+        // We also paginate them to reduce the view size in the application.
         else {
             $notes = $tenant->notes()->simplePaginate();
         }
@@ -50,12 +50,12 @@ class NotesController extends Controller
     }
 
     /**
-     * Method to display an note in the application. 
-     * 
-     * @param  Note $note   The resource entity from the given note.   
-     * @return Renderable 
+     * Method to display an note in the application.
+     *
+     * @param  Note $note   The resource entity from the given note.
+     * @return Renderable
      */
-    public function show(Note $note): Renderable 
+    public function show(Note $note): Renderable
     {
         return view('tenants.notes.show', compact('note'));
     }
@@ -91,12 +91,12 @@ class NotesController extends Controller
     }
 
     /**
-     * Method for displaying the edit view from a note. 
-     * 
-     * @param  Note $note   The storage entity from the given note. 
-     * @return Renderable 
+     * Method for displaying the edit view from a note.
+     *
+     * @param  Note $note   The storage entity from the given note.
+     * @return Renderable
      */
-    public function edit(Note $note): Renderable 
+    public function edit(Note $note): Renderable
     {
         $this->authorize('update', $note);
         return view('tenants.notes.edit', compact('note'));
@@ -104,16 +104,16 @@ class NotesController extends Controller
 
     /**
      * Method for update a note from the tenant in the application.
-     * 
-     * @param  TenantsNoteValidator $input  The form request class that holds all the request information. 
+     *
+     * @param  TenantsNoteValidator $input  The form request class that holds all the request information.
      * @param  Note                 $note   The resource entity from the given note.
-     * @return RedirectResponse 
+     * @return RedirectResponse
      */
-    public function update(TenantsNoteValidator $input, Note $note): RedirectResponse 
+    public function update(TenantsNoteValidator $input, Note $note): RedirectResponse
     {
         $this->authorize('update', $note);
     
-        if ($note->update($input->all())) { // The note has been updated in the application. 
+        if ($note->update($input->all())) { // The note has been updated in the application.
             $input->user()->logActivity('Notities', "Heeft een notitie aangepast van de huurder {$note->notable->full_name}.");
             flash('De notitie is aangepast in het verhuur portaal.');
         }
@@ -122,14 +122,14 @@ class NotesController extends Controller
     }
 
     /**
-     * Method for deleting an tenant note in the application. 
-     * 
-     * @param  Note $note   The resource entity from the given note. 
-     * @return RedirectResponse 
+     * Method for deleting an tenant note in the application.
+     *
+     * @param  Note $note   The resource entity from the given note.
+     * @return RedirectResponse
      */
-    public function destroy(Note $note): RedirectResponse 
+    public function destroy(Note $note): RedirectResponse
     {
-        $user = auth()->user(); 
+        $user = auth()->user();
 
         if ($user->can('delete', $note) && $note->delete()) {
             $user->logActivity('Notities', "Heeft een notitie van {$note->notable->full_name} verwijderd in het protaal.");

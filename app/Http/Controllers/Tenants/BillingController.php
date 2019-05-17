@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Tenants;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Support\Renderable;
 use App\Models\Tenant;
+use Illuminate\Contracts\Support\Renderable;
 
 /**
  * Class BillingController
- * 
+ *
  * @package App\Http\Controllers\Tenants
  */
 class BillingController extends Controller
@@ -25,7 +24,7 @@ class BillingController extends Controller
     }
 
     /**
-     * 
+     *
      */
     public function show(Tenant $tenant): Renderable
     {

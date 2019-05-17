@@ -1,8 +1,8 @@
 <?php
 
 use App\User;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ use Faker\Generator as Faker;
 $factory->define(User::class, function (Faker $faker): array {
     return [
         'name' => $faker->name,
-        'firstname' => $faker->firstName, 
+        'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'phone_number' => $faker->phoneNumber,

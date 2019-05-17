@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\Users;
 
-use Valorin\Pwned\Pwned;
 use Illuminate\Foundation\Http\FormRequest;
+use Valorin\Pwned\Pwned;
 
 /**
- * Class SecurityValidator 
- * 
+ * Class SecurityValidator
+ *
  * @package App\Http\Requests\Users
  */
 class SecurityValidator extends FormRequest
@@ -17,10 +17,10 @@ class SecurityValidator extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool 
+    public function authorize(): bool
     {
-        // No authorization check is required because the controller action 
-        // Will be fired on the authenticated user. 
+        // No authorization check is required because the controller action
+        // Will be fired on the authenticated user.
         return true;
     }
 

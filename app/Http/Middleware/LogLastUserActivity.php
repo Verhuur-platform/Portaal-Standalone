@@ -3,12 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Class LogLastUserActivity
- * 
+ *
  * @package App\Http\Middleware
  */
 class LogLastUserActivity
@@ -21,8 +21,8 @@ class LogLastUserActivity
     protected $auth;
     
     /**
-     * Create new LogLastUserActivity instance. 
-     * 
+     * Create new LogLastUserActivity instance.
+     *
      * @param  Guard $auth The authentication guard variable.
      * @return void
      */

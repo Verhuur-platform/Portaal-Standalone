@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Tenants;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Lease\TenantsValidator;
 use App\Models\Tenant;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 /**
  * Class DashboardController

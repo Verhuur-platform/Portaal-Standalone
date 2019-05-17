@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Method to determine we can reset the database migrations or not.
-     * 
+     *
      * @return bool
      */
-    private function canResetDatabase(): bool 
+    private function canResetDatabase(): bool
     {
         return $this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')
             && app()->isLocal();

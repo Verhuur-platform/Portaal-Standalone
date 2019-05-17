@@ -1,17 +1,17 @@
-<?php 
+<?php
 
 namespace App\Repositories;
 
+use App\Models\Lease;
 use App\Models\Scopes\LeaseScopes;
 use App\Models\Tenant;
 use App\User;
-use App\Models\Lease;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 /**
- * Class LeaseRepository 
- * 
+ * Class LeaseRepository
+ *
  * @package App\Repositories
  */
 class LeaseRepository extends Model

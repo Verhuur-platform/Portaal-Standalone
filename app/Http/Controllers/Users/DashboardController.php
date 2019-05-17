@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Http\Requests\Users\LoginValidator;
-use Gate;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Support\Renderable;
+use App\Http\Requests\Users\LoginValidator;
 use App\User;
-use Mpociot\Reanimate\ReanimateModels;
+use Gate;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Mpociot\Reanimate\ReanimateModels;
 use Spatie\Permission\Models\Role;
 
 /**
  * Class DashboardController
- * 
+ *
  * @package App\Http\Controllers\Users
  */
 class DashboardController extends Controller
@@ -24,8 +24,8 @@ class DashboardController extends Controller
     use ReanimateModels;
 
     /**
-     * Create new DashboardController instance. 
-     * 
+     * Create new DashboardController instance.
+     *
      * @return void
      */
     public function __construct()
@@ -36,7 +36,7 @@ class DashboardController extends Controller
     }
 
     /**
-     * Method for displaying the dashboard for the application logins. 
+     * Method for displaying the dashboard for the application logins.
      *
      * @param  User         $users  The database model entity from the users storage.
      * @param  string|null  $filter The filter name that needs to be applied. Defaults to null.
@@ -86,13 +86,13 @@ class DashboardController extends Controller
     }
 
     /**
-     * Method for deleting an user account in the application. 
-     * 
-     * @param  Request  $request    The request information collection  
+     * Method for deleting an user account in the application.
+     *
+     * @param  Request  $request    The request information collection
      * @param  User     $user       The storage entity from the given user.
      * @return Renderable|RedirectResponse
      */
-    public function destroy(Request $request, User $user) 
+    public function destroy(Request $request, User $user)
     {
         if ($request->isMethod('GET')) {
             $viewPath = Gate::allows('same-user', $user) ? 'account.delete' : 'users.delete';
@@ -107,8 +107,8 @@ class DashboardController extends Controller
     }
 
     /**
-     * Method for undo the delete form the user account in the application. 
-     * 
+     * Method for undo the delete form the user account in the application.
+     *
      * @param  User $trashedUser The resource entity from the soft deleted user in the application.
      * @return RedirectResponse
      */
@@ -118,5 +118,5 @@ class DashboardController extends Controller
         $trashedUser->flashInfo("De verwijdering van {$trashedUser->name} is ongedaan gemaakt in het portaal.");
         
         return $this->restoreModel($trashedUser->id, new User(), 'users.index');
-    }   
+    }
 }

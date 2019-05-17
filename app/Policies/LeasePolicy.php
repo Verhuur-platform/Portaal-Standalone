@@ -2,13 +2,13 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Models\Lease;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
- * Class LeasePolicy 
- * 
+ * Class LeasePolicy
+ *
  * @package App\Policies
  */
 class LeasePolicy
@@ -18,7 +18,7 @@ class LeasePolicy
     /**
      * Determine whether the user can update the lease.
      *
-     * @param  User   $user  The resource entity from the authenticated user. 
+     * @param  User   $user  The resource entity from the authenticated user.
      * @param  Lease  $lease The resource entity from the given lease.
      * @return bool
      */

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Models\Note;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 /**
@@ -28,13 +28,13 @@ class NotePolicy
     }
 
     /**
-     * Determine whether the user can update the note or not. 
-     * 
-     * @param  User $user The resource entity from the authenticated user. 
-     * @param  Note $note The resource entity from the tenant his note. 
+     * Determine whether the user can update the note or not.
+     *
+     * @param  User $user The resource entity from the authenticated user.
+     * @param  Note $note The resource entity from the tenant his note.
      * @return bool
      */
-    public function update(User $user, Note $note): bool 
+    public function update(User $user, Note $note): bool
     {
         return $user->is($note->author);
     }

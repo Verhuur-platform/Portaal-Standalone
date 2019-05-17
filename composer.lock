@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bd970eab7033543edffa69779fe753a",
+    "content-hash": "56eba87f9ea6ed1b6892303454320169",
     "packages": [
         {
             "name": "actb/laravel-form-helpers",

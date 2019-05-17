@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Repositories\NoteRepository;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Note

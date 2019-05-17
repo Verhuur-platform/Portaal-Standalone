@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\Tenants\DashboardController;
 use App\Http\Controllers\Tenants\NotesController;
-use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
-use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
-use App\Http\Controllers\Users\LockController;
 use App\Http\Controllers\Users\AccountController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
+use App\Http\Controllers\Users\LockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ Route::put('/huurder/notities/{note}', [NotesController::class, 'update'])->name
 Route::get('/huurder/notities/{tenant}/{filter?}', [NotesController::class, 'index'])->name('tenant.notes');
 Route::get('/huurder/notitie/{note}', [NotesController::class, 'show'])->name('tenant.notes.show');
 
-// Login dashboard routes 
+// Login dashboard routes
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
 Route::get('/login/undo/{trashedUser}', [LoginsDashboardController::class, 'undoDeleteRoute'])->name('users.delete.undo');
 Route::get('/logins/nieuw', [LoginsDashboardController::class, 'create'])->name('users.create');

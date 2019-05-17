@@ -7,15 +7,15 @@ use App\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class Lease 
- * 
+ * Class Lease
+ *
  * @package App\Models
  */
 class Lease extends LeaseRepository
 {
     /**
-     * Mass-assign fields for the database table. 
-     * 
+     * Mass-assign fields for the database table.
+     *
      * @return array
      */
     protected $fillable = ['persons', 'start_date', 'end_date', 'tenant_id', 'status_id'];
@@ -28,8 +28,8 @@ class Lease extends LeaseRepository
     protected $dates = ['start_date', 'end_date'];
 
     /**
-     * Data relation for the tenant from the lease. 
-     * 
+     * Data relation for the tenant from the lease.
+     *
      * @return BelongsTo
      */
     public function tenant(): BelongsTo

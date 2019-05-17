@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Lease;
 use App\Models\Note;
-use App\Models\Lease; 
 use App\Policies\LeasePolicy;
 use App\Policies\NotePolicy;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

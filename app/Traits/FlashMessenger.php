@@ -1,33 +1,33 @@
-<?php 
+<?php
 
-namespace App\Traits; 
+namespace App\Traits;
 
 use Laracasts\Flash\FlashNotifier;
 
 /**
- * Trait FlashMessenger 
- * 
- * Trait for mapping shortcut functions for the flash session layer. 
- * 
+ * Trait FlashMessenger
+ *
+ * Trait for mapping shortcut functions for the flash session layer.
+ *
  * @package App\Traits
  */
-trait FlashMessenger 
+trait FlashMessenger
 {
     /**
-     * Flash an message. 
-     * 
-     * @param  string $message The actual flash message. 
+     * Flash an message.
+     *
+     * @param  string $message The actual flash message.
      * @return FlashNotifier
      */
     public function flashMessage(string $message): FlashNotifier
     {
         return flash($message);
-    } 
+    }
 
     /**
-     * Flash an danger message. 
-     * 
-     * @param  string $message The actual danger message. 
+     * Flash an danger message.
+     *
+     * @param  string $message The actual danger message.
      * @return FlashNotifier
      */
     public function flashDanger(string $message): FlashNotifier
@@ -36,10 +36,10 @@ trait FlashMessenger
     }
 
     /**
-     * Flash an warning message. 
-     * 
-     * @param  string $message The actual warning message. 
-     * @return FlashNotifier 
+     * Flash an warning message.
+     *
+     * @param  string $message The actual warning message.
+     * @return FlashNotifier
      */
     public function flashWarning(string $message): FlashNotifier
     {
@@ -47,9 +47,9 @@ trait FlashMessenger
     }
     
     /**
-     * Flash an success message. 
-     * 
-     * @param  string $message The actual success message. 
+     * Flash an success message.
+     *
+     * @param  string $message The actual success message.
      * @return FlashNotifier
      */
     public function flashSuccess(string $message): FlashNotifier
@@ -58,9 +58,9 @@ trait FlashMessenger
     }
 
     /**
-     * Flash an info message. 
-     * 
-     * @param  string $message The actual info message. 
+     * Flash an info message.
+     *
+     * @param  string $message The actual info message.
      * @return FlashNotifier
      */
     public function flashInfo(string $message): FlashNotifier

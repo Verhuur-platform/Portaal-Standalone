@@ -2,16 +2,16 @@
 
 namespace App\Providers;
 
+use App\Composers\AccountComposer;
 use App\Models\Note;
 use App\Observers\NoteObserver;
-use App\User;
 use App\Observers\UserObserver;
-use App\Composers\AccountComposer;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class AppServiceProvider 
- * 
+ * Class AppServiceProvider
+ *
  * @package App\Providers
  */
 class AppServiceProvider extends ServiceProvider
@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // View Composers 
+        // View Composers
         view()->composer('*', AccountComposer::class);
     }
 

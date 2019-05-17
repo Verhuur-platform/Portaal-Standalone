@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class ForbidBannedUser
- * 
+ *
  * @package App\Http\Middleware
  */
 class ForbidBannedUser

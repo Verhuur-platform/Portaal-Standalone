@@ -1,8 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
-use App\User;
 
 /**
  * Class AclTableSeeder
@@ -21,23 +21,23 @@ class AclTableSeeder extends Seeder
             $this->createRoleIfNotExists($inputRoles);
         }
 
-        // There is only a authentication user needed. 
+        // There is only a authentication user needed.
         else {
             $this->createUser()->assignRole('gebruiker');
         }
     }
 
     /**
-     * Function for creating the ACl role if it doesn't exist already in the storage. 
-     * 
+     * Function for creating the ACl role if it doesn't exist already in the storage.
+     *
      * @param  string $roles    The one dimensional array for the given roles.
      * @return void
      */
-    protected function createRoleIfNotExists(string $roles): void 
+    protected function createRoleIfNotExists(string $roles): void
     {
         foreach (explode(',', $roles) as $role) {
             $role = Role::firstOrCreate(['name' => trim($role)]);
-            $this->createUserWithRole($role); // Create one user for each role. 
+            $this->createUserWithRole($role); // Create one user for each role.
         }
     }
 
@@ -51,29 +51,29 @@ class AclTableSeeder extends Seeder
 
     /**
      * Method for creating an new user in the database storage. + attaching ACL role.
-     * 
-     * @param  Role $role The database entity from the given or created ACL role. 
-     * @return void 
+     *
+     * @param  Role $role The database entity from the given or created ACL role.
+     * @return void
      */
-    protected function createUserWithRole(Role $role): void 
+    protected function createUserWithRole(Role $role): void
     {
         $user = $this->createUser()->assignRole($role->name);
         
         if ($this->roleIsWebmaster($role->name)) {
-            $this->command->info('Here are your webmaster details to login:'); 
+            $this->command->info('Here are your webmaster details to login:');
             $this->command->warn($user->email);
             $this->command->warn('Password is "password"');
         }
     }
 
-     /**
-     * Determine if the created role is webmaster or not. 
-     * 
-     * @param  string $role The name from the given role. 
-     * @return bool
-     */
-    protected function roleIsWebmaster(string $role): bool 
+    /**
+    * Determine if the created role is webmaster or not.
+    *
+    * @param  string $role The name from the given role.
+    * @return bool
+    */
+    protected function roleIsWebmaster(string $role): bool
     {
-        return $role === 'webmaster'; 
+        return $role === 'webmaster';
     }
 }

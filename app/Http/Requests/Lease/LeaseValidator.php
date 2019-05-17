@@ -5,8 +5,8 @@ namespace App\Http\Requests\Lease;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class LeaseValidator 
- * 
+ * Class LeaseValidator
+ *
  * @package App\Http\Requests\Lease
  */
 class LeaseValidator extends FormRequest
@@ -16,10 +16,10 @@ class LeaseValidator extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool 
+    public function authorize(): bool
     {
-        // Returns true because the authorization check happends on 
-        // The main controller action function. 
+        // Returns true because the authorization check happends on
+        // The main controller action function.
 
         return true;
     }
