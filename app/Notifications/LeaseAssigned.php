@@ -64,8 +64,6 @@ class LeaseAssigned extends Notification implements ShouldQueue
      */
     public function toArray($notifiable): array
     {
-        // TODO: Document the array attributes
-
         return [
             'title'       => $this->user->name . ' heeft jouw aangewezen voor een verhuring',
             'body'        => 'Je bent aangewezen als verantwoordelijke opvolger voor de verhuring aan ' . $this->lease->tenant->full_name,

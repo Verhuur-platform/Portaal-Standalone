@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Hash;
 /**
  * Trait SecuredRequestTrait 
  * ----
- * Trait for securing actions with an hash check of the authenticated user. 
- * 
+ * Trait for securing actions with an hash check of the authenticated user.
+ *
  * @todo Refactor to custom rule object. <https://laravel.com/docs/5.8/validation#custom-validation-rules>
  * 
  * @package App\Traits
@@ -40,7 +40,7 @@ trait SecuredRequest
     /**
      * Method for performing the check for securing the request.
      *
-     * @param  string $confirmation The given user password.
+     * @param  string  $confirmation The given user password.
      * @return bool
      */
     public function isRequestSecured(string $confirmation): bool

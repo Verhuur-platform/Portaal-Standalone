@@ -84,7 +84,7 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
      *
      * @throws \Exception
      *
-     * @param Request $request The request information collection instance
+     * @param  Request $request  The request information collection instance
      * @return void
      */
     public function deleteLogin(Request $request): void 
