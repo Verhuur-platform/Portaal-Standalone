@@ -30,7 +30,7 @@ class DashboardController extends Controller
      * Get the dashboard for all the tenants in the application.
      *
      * @param  Tenant      $tenants The database model for the tenants in the portal.
-     * @param  null|string $filter  The name of the tenant group u want to display.
+     * @param  string|null $filter  The name of the tenant group u want to display.
      * @return Renderable
      */
     public function index(Tenant $tenants, ?string $filter = null): Renderable

@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Hash;
  */
 trait SecuredRequest
 {
-    /** 
-     * Method for mapping the authenticated user to an function. 
-     * 
+    /**
+     * Method for mapping the authenticated user to an function.
+     *
      * @return User
      */
     public function getAuthUser(): User
@@ -28,22 +28,22 @@ trait SecuredRequest
     }
 
     /**
-     * The validation rules for the confirmation form. 
-     * 
+     * The validation rules for the confirmation form.
+     *
      * @return array
      */
-    public function securedRequestRules(): array 
+    public function securedRequestRules(): array
     {
         return ['confirmatie' => ['required', 'string']];
     }
 
     /**
-     * Method for performing the check for securing the request. 
-     * 
+     * Method for performing the check for securing the request.
+     *
      * @param  string $confirmation The given user password.
-     * @return bool 
+     * @return bool
      */
-    public function isRequestSecured(string $confirmation): bool 
+    public function isRequestSecured(string $confirmation): bool
     {
         return Hash::check($confirmation, $this->getAuthUser()->getAuthPassword());
     }

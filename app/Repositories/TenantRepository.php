@@ -33,7 +33,7 @@ class TenantRepository extends Model
     /**
      * Get the tenants by the given group. Defaults to all users.
      *
-     * @param  null|string $filter The name of the filter group.
+     * @param  string|null $filter The name of the filter group.
      * @return Builder
      */
     public function getByGroup(?string $filter = null): Builder
@@ -89,7 +89,9 @@ class TenantRepository extends Model
      */
     public function createTenant(array $attributes): ?Tenant
     {
-        if ($tenant = $this->create($attributes)) {
+        $tenant = $this->create($attributes); 
+
+        if ($tenant) {
             auth()->user()->logActivity('Huurders', "Heeft {$tenant->full_name} toegevoegd als huurder.");
             $this->flashSuccess($this->full_name . ' is toegevoegd als huurder in het portaal.');
         }

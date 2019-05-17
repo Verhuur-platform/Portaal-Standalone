@@ -9,7 +9,6 @@ use App\Models\Lease;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-
 /**
  * Class LeaseRepository 
  * 
@@ -62,8 +61,9 @@ class LeaseRepository extends Model
     public function storeLease(Tenant $tenant, Request $request): Lease
     {
         $request->merge(['status_id' => $request->status, 'tenant_id' => $tenant->id]);
+        $lease = $this->create($request->all());
 
-        if ($lease = $this->create($request->all())) {
+        if ($lease) {
             $successor = $this->getSuccessor($request->follower_id);
             $lease->successor()->associate($successor)->save();
 

@@ -32,10 +32,9 @@ class LoginCreated extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed $notifiable Accessor variable for the user information
      * @return array
      */
-    public function via($notifiable): array
+    public function via(): array
     {
         return ['mail'];
     }

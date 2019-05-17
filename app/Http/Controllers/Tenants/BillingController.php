@@ -24,6 +24,9 @@ class BillingController extends Controller
         $this->middleware(['auth', 'role:webmaster']);
     }
 
+    /**
+     * 
+     */
     public function show(Tenant $tenant): Renderable
     {
         $billingInfo = $tenant->billingInfo;

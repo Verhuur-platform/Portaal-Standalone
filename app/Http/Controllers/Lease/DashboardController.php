@@ -36,7 +36,7 @@ class DashboardController extends Controller
      * @todo Implement the request filters on the view and backend.
      * 
      * @param  Lease        $leases The database model instance for the leases. 
-     * @param  null|string  $filter The filter name that needs to be applied. Defaults to null.
+     * @param  string|null  $filter The filter name that needs to be applied. Defaults to null.
      * @return Renderable
      */
     public function index(Lease $leases, ?string $filter = null): Renderable

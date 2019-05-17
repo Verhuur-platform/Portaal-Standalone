@@ -57,7 +57,7 @@ class UserRepository extends Authenticatable implements FlashMessengerInterface
      * --- 
      * Fallback = all users when the user is not permitted to the criteria. 
      * 
-     * @param   null|string $filter   The name of the filter criteria that should be applied. 
+     * @param   string|null $filter   The name of the filter criteria that should be applied. 
      * @return  Builder
      */
     public function getUsersByRequest(?string $filter = null): Builder

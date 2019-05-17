@@ -6,7 +6,6 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use App\Http\Requests\Users\SecurityValidator;
-use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Http\Requests\Users\InformationValidator;
 
@@ -52,6 +51,7 @@ class AccountController extends Controller
      * Method for updating the account information.
      *
      * @todo Fill in the validator class.
+     * @todo Complete docblock class
      *
      * @param  InformationValidator $input
      * @return RedirectResponse

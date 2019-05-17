@@ -18,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Note::class  => NotePolicy::class,
-        Lease::class => LeasePolicy::class
+        Lease::class => LeasePolicy::class,
     ];
 
     /**
@@ -29,7 +29,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
     }
 }

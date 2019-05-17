@@ -29,7 +29,7 @@ class NotesController extends Controller
     /**
      * Method for displaying all the notes for the given user.
      *
-     * @param  null|string $filter The applied filter for the notes.
+     * @param  string|null $filter The applied filter for the notes.
      * @param  Tenant      $tenant The database resource from the given user.
      * @return Renderable
      */

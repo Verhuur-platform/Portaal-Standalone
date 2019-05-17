@@ -33,7 +33,7 @@ class InformationValidator extends FormRequest
     {
         return [
             'firstname' => ['required', 'string', 'max:50'],
-            'lastname'  => ['required', 'string', 'max:50']
+            'lastname'  => ['required', 'string', 'max:50'],
         ];
     }
 }

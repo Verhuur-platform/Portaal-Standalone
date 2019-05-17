@@ -42,9 +42,11 @@ class ForbidBannedUser
     public function handle($request, Closure $next)
     {
         $user = $this->auth->user();
+        
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
             return redirect()->route('user.deactivated');
         }
+
         return $next($request);
     }
 }

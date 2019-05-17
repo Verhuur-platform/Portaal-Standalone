@@ -39,7 +39,7 @@ class DashboardController extends Controller
      * Method for displaying the dashboard for the application logins. 
      *
      * @param  User         $users  The database model entity from the users storage.
-     * @param  null|string  $filter The filter name that needs to be applied. Defaults to null.
+     * @param  string|null  $filter The filter name that needs to be applied. Defaults to null.
      * @return Renderable
      */
     public function index(User $users, ?string $filter = null): Renderable
@@ -75,8 +75,9 @@ class DashboardController extends Controller
     {
         // Activity log happends on the UserObserver action.
         $input->merge(['name' => "{$input->firstname} {$input->lastname}"]);
+        $user = $user->create($input->all());
 
-        if ($user = $user->create($input->all())) {
+        if ($user) {
             $user->assignRole($input->role);
             $user->flashSuccess("Er is een login aangemaakt voor <strong>{$user->name}</strong>");
         }
@@ -94,7 +95,7 @@ class DashboardController extends Controller
     public function destroy(Request $request, User $user) 
     {
         if ($request->isMethod('GET')) {
-            $viewPath = (Gate::allows('same-user', $user)) ? 'account.delete' : 'users.delete';
+            $viewPath = Gate::allows('same-user', $user) ? 'account.delete' : 'users.delete';
             return view($viewPath, compact('user'));
         }
 
