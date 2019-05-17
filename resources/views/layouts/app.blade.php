@@ -39,6 +39,16 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="fe fe-inbox"></i>
+
+                                <span style="margin-top: -.25rem;" class="badge ml-1 align-middle badge-pill badge-notifications">
+                                    0
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('notifications.index') }}">
                                 <i class="fe fe-bell"></i>
 
@@ -98,6 +108,12 @@
                     <a class="nav-link" href="">
                         <i class="fe fe-alert-triangle mr-1"></i> Werkpunten
                     </a>
+
+                    @hasanyrole('webmaster')
+                        <a class="nav-link" href="">
+                            <i class="fe fe-activity mr-1"></i> Audit
+                        </a>
+                    @endhasanyrole
                 </nav>
             </div>
 

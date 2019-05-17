@@ -3,9 +3,11 @@
         <i class="fe fe-info text-sgv-brown mr-3"></i> Informatie
     </a>
 
-    <a href="" class="list-group-item list-group-item-action">
-        <i class="fe fe-file-text text-sgv-brown mr-3"></i> Facturatie gegevens
-    </a>
+    @if ($currentUser->hasRole('webmaster'))
+        <a href="" class="list-group-item list-group-item-action">
+            <i class="fe fe-file-text text-sgv-brown mr-3"></i> Facturatie gegevens
+        </a>
+    @endif
 
     <a href="{{ route('tenant.notes', ['tenant' => $tenant]) }}" class="list-group-item list-group-item-action {{ active('tenant.notes*') }}">
         <i class="fe fe-edit-2 text-sgv-brown mr-3"></i> Notities
