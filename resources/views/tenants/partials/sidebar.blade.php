@@ -4,7 +4,7 @@
     </a>
 
     @if ($currentUser->hasRole('webmaster'))
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('tenant.billing', $tenant) }}" class="list-group-item  {{ active('tenant.billing') }} list-group-item-action">
             <i class="fe fe-file-text text-sgv-brown mr-3"></i> Facturatie gegevens
         </a>
     @endif

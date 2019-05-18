@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Models\Billing;
 use App\Models\Note;
 use App\Models\Tenant;
 use App\Traits\FlashMessenger;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +30,16 @@ class TenantRepository extends Model
     public function notes(): MorphMany
     {
         return $this->morphMany(Note::class, 'notable');
+    }
+
+    /**
+     * Data relation for the billing information from the tenant.
+     *
+     * @return HasOne
+     */
+    public function billingInfo(): HasOne
+    {
+        return $this->hasOne(Billing::class);
     }
 
     /**

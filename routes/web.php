@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\Tenants\BillingController;
 use App\Http\Controllers\Tenants\DashboardController;
 use App\Http\Controllers\Tenants\NotesController;
 use App\Http\Controllers\Users\AccountController;
@@ -42,6 +43,8 @@ Route::post('/huurder/notities/{tenant}', [NotesController::class, 'store'])->na
 Route::put('/huurder/notities/{note}', [NotesController::class, 'update'])->name('tenant.notes.update');
 Route::get('/huurder/notities/{tenant}/{filter?}', [NotesController::class, 'index'])->name('tenant.notes');
 Route::get('/huurder/notitie/{note}', [NotesController::class, 'show'])->name('tenant.notes.show');
+Route::get('/huurder/{tenant}/facturatie', [BillingController::class, 'show'])->name('tenant.billing');
+Route::post('/huurder/{tenant}/facturatie', [BillingController::class, 'update'])->name('tenant.billing.store');
 
 // Login dashboard routes
 Route::match(['get', 'delete'], '/logins/verwijder/{user}', [LoginsDashboardController::class, 'destroy'])->name('users.delete');
