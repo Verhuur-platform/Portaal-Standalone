@@ -59,23 +59,27 @@
                         <div class="offset-1 col-8">
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="address">Adres + huisnummer</label>
-                                    <input id="address" type="text" class="form-control" placeholder="Adres + huisnummer" @input('address')>
+                                    <label for="address">Adres + huisnummer <span class="text-danger">*</span></label>
+                                    <input id="address" type="text" class="form-control @rror('address', 'is-invalid')" placeholder="Adres + huisnummer" @input('address')>
+                                     @error('address')
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="postal">Postcode</label>
-                                    <input id="postal" type="text" class="form-control" placeholder="Postcode" @input('postal')>
+                                    <label for="postal">Postcode <span class="text-danger">*</span></label>
+                                    <input id="postal" type="text" class="form-control @error('postal', 'is-invalid')" placeholder="Postcode" @input('postal')>
+                                    @error('postal')
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="city">Stad</label>
-                                    <input id="city" type="text" class="form-control" placeholder="Stad" @input('city')>
+                                    <label for="city">Stad <span class="text-danger">*</span></label>
+                                    <input id="city" type="text" class="form-control @error('city', 'is-invalid')" placeholder="Stad" @input('city')>
+                                    @error('city')
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="country">Land</label>
-                                    <input id="country" type="text" class="form-control" placeholder="Land" @input('country')>
+                                    <label for="country">Land <span class="text-danger">*</span></label>
+                                    <input id="country" type="text" class="form-control @error('country', 'is-invalid')" placeholder="Land" @input('country')>
+                                    @error('country')
                                 </div>
                             </div>
                         </div>

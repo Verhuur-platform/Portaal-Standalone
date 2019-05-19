@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenants;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Tenants\BillingValidator;
 use App\Models\Tenant;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request; 
@@ -40,18 +41,17 @@ class BillingController extends Controller
     /**
      * Method for storing/updating the billing information from the tenant. 
      * 
-     * @param  Request  $input  The form request class that holds all the form inputs. 
-     * @param  Tenant   $tenant The resource entity from the given tenant in the storage.
+     * @param  BillingValidator  $input  The form request class that holds all the form inputs.
+     * @param  Tenant            $tenant The resource entity from the given tenant in the storage.
      * @return RedirectResponse
      */
-    public function update(Request $input, Tenant $tenant): RedirectResponse
+    public function update(BillingValidator $input, Tenant $tenant): RedirectResponse
     {
-        // No validation has been added. Because the billing information is not needed 
-        // In some cases because the tenant can pay his lease cash in some cases. 
+        $user = $this->getAuthenticatedUser();
 
         if ($tenant->billingInfo()->updateOrCreate(['tenant_id' => $tenant->id], $input->all())) {
-            auth()->user()->logActivity('Facturatie', "Heeft de facturatie informatie van {$tenant->full_name} aangepast.");
-            auth()->user()->flashSuccess("De facturatie data van {$tenant->full_name} is aangepast!");
+            $user->logActivity('Facturatie', "Heeft de facturatie informatie van {$tenant->full_name} aangepast.");
+            $user->flashSuccess("De facturatie data van {$tenant->full_name} is aangepast!");
         }
 
         return redirect()->route('tenant.billing', $tenant);
