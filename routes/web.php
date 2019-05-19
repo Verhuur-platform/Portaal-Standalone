@@ -9,6 +9,7 @@ use App\Http\Controllers\Tenants\NotesController;
 use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
 use App\Http\Controllers\Users\LockController;
+use App\Http\Controllers\AuditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,6 @@ Route::get('/verhuringen/{filter?}', [LeasesDashboardController::class, 'index']
 // Notifications routes
 Route::get('/notificaties/lees-alles', [NotificationsController::class, 'markAll'])->name('notifications.markAll');
 Route::get('/notificaties/{type?}', [NotificationsController::class, 'index'])->name('notifications.index');
+
+// Audit routes
+Route::get('/audit', [AuditController::class, 'index'])->name('audit.index');

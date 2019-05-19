@@ -110,7 +110,7 @@
                     </a>
 
                     @hasanyrole('webmaster')
-                        <a class="nav-link" href="">
+                        <a class="nav-link {{ active('audit*') }}" href="{{ route('audit.index') }}">
                             <i class="fe fe-activity mr-1"></i> Audit
                         </a>
                     @endhasanyrole
