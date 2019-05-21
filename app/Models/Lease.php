@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Repositories\LeaseRepository;
 use App\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * Class Lease
@@ -45,6 +46,16 @@ class Lease extends LeaseRepository
     public function status(): BelongsTo
     {
         return $this->belongsTo(Status::class);
+    }
+
+    /**
+     * Data relation for the notes that are attached to the lease.
+     *
+     * @return MorphMany
+     */
+    public function notes(): MorphMany
+    {
+        return $this->morphMany(Note::class, 'notable');
     }
 
     /**

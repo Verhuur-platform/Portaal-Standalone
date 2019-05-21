@@ -10,6 +10,7 @@ use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Users\DashboardController as LoginsDashboardController;
 use App\Http\Controllers\Users\LockController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\Lease\NotesController as LeaseNotesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,9 @@ Route::get('/verhuringen/nieuw', [LeasesDashboardController::class, 'create'])->
 Route::post('/verhuringen/nieuw', [LeasesDashboardController::class, 'store'])->name('lease.store');
 Route::get('/verhuring/{lease}', [LeasesDashboardController::class, 'show'])->name('lease.show');
 Route::get('/verhuringen/{filter?}', [LeasesDashboardController::class, 'index'])->name('lease.dashboard');
+
+// Laease notes routes 
+Route::get('/verhuring/{lease}/notes', [LeaseNotesController::class, 'index'])->name('lease.notes.dashboard');
 
 // Notifications routes
 Route::get('/notificaties/lees-alles', [NotificationsController::class, 'markAll'])->name('notifications.markAll');

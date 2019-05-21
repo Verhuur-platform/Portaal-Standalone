@@ -26,12 +26,12 @@ class AuditController extends Controller
 
     /**
      * Method for displaying all the audit logs in the application. 
-     * 
-     * @param  Activity $logs The resource model for the audit logs table in the database.
+     *
      * @return Renderable
      */
-    public function index(Activity $logs): Renderable
+    public function index(): Renderable
     {
-        return view('audit.index', ['logs' => $logs->simplePaginate()]);
+        $logs = Activity::orderBy('created_at', 'DESC')->simplePaginate();
+        return view('audit.index', compact('logs'));
     }
 }

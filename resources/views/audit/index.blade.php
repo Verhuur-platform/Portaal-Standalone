@@ -26,6 +26,7 @@
                                 <td><span class="text-muted table-id">{{ $log->causer->name }}</span></td>
                                 <td>{{ $log->log_name }}</td>
                                 <td>{{ $log->description }}</td>
+                                <td>{{ $log->created_at->format('d/m/Y H:i:s') }}</td>
                             </td>
                         @empty
                             <tr>
