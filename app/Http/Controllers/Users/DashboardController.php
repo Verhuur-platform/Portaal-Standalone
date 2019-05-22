@@ -51,6 +51,18 @@ class DashboardController extends Controller
     }
 
     /**
+     * Method for searching users in the application. 
+     * 
+     * @param  Request $request The instance that holds all the request fields. 
+     * @return Renderable
+     */
+    public function search(Request $request): Renderable 
+    {
+        $users = 
+        return view('users.dashboard', ['users' => $users->simplePaginate()]);
+    }
+
+    /**
      * Method for displaying the create view for a new user.
      *
      * @param  Role $roles The database model for all the ACL roles in the application.

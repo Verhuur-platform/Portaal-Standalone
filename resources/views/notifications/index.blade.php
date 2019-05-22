@@ -30,7 +30,7 @@
 
                     @foreach ($notifications as $notification)
                         <div class="media small text-muted pt-2">
-                            <img src="{{ avatar($notification->notifiable) }}" alt="{{ $notification->notifiable->name }}" class="mr-2 shadow-sm notification-avatar rounded">
+                            <img src="{{ avatar($notification->notifiable) }}" alt="{{ $notification->notifiable->name }}" class="mr-3 shadow-sm notification-avatar rounded">
                             <div class="card w-100 card-text border-0 mb-0">
                                 <div class="w-100">
                                     <strong class="float-left text-gray-dark mr-1">{{ $notification->data['title'] }}</strong> - {{ $notification->created_at->diffForHumans() }}</strong>

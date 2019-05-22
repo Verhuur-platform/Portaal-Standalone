@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="465a89dd-0417-47a2-a9a9-10cdf989c234" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/lease/notes/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Lease/NotesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Lease/NotesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Lease.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Lease.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/audit/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/audit/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/lease/partials/sidenav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lease/partials/sidenav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="465a89dd-0417-47a2-a9a9-10cdf989c234" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/app/Repositories/TenantRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="265">
-              <caret line="30" column="5" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+              <caret line="30" column="5" selection-start-line="29" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
               <folding>
                 <element signature="e#36#59#0#PHP" expanded="true" />
               </folding>
@@ -483,11 +473,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19731000" />
+    <option name="totallyTimeSpent" value="19738000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3065032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -710,7 +699,7 @@
     <entry file="file://$PROJECT_DIR$/app/Repositories/TenantRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
+          <caret line="30" column="5" selection-start-line="29" selection-start-column="4" selection-end-line="32" selection-end-column="5" />
           <folding>
             <element signature="e#36#59#0#PHP" expanded="true" />
           </folding>
