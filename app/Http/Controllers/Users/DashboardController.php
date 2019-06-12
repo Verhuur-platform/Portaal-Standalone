@@ -58,7 +58,6 @@ class DashboardController extends Controller
      */
     public function search(Request $request): Renderable 
     {
-        $users = 
         return view('users.dashboard', ['users' => $users->simplePaginate()]);
     }
 
