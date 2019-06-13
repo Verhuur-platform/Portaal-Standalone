@@ -58,7 +58,7 @@ class DashboardController extends Controller
      */
     public function search(Request $request): Renderable 
     {
-        $users = 
+        $users = ''; // TODO temporary fix on the search method.
         return view('users.dashboard', ['users' => $users->simplePaginate()]);
     }
 
@@ -100,8 +100,10 @@ class DashboardController extends Controller
     /**
      * Method for deleting an user account in the application.
      *
-     * @param  Request  $request    The request information collection
-     * @param  User     $user       The storage entity from the given user.
+     * @throws \Exception <- Native PHP class
+     *
+     * @param Request $request The request information collection
+     * @param User $user The storage entity from the given user.
      * @return Renderable|RedirectResponse
      */
     public function destroy(Request $request, User $user)
