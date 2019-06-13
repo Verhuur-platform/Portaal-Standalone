@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Lease\DashboardController as LeasesDashboardController;
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\Premises\DashboardController as PremisesController;
 use App\Http\Controllers\Tenants\BillingController;
 use App\Http\Controllers\Tenants\DashboardController;
 use App\Http\Controllers\Tenants\NotesController;
@@ -65,6 +66,9 @@ Route::get('/deactiveer/{userEntity}', [LockController::class, 'create'])->name(
 Route::get('/activeer/{userEntity}', [LockController::class, 'destroy'])->name('users.unlock');
 Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('users.lock.store');
 Route::get('/gedeactiveerd', [LockController::class, 'index'])->name('user.deactivated');
+
+// Premises routes
+Route::get('/lokalen', [PremisesController::class, 'index'])->name('premises.dashboard');
 
 // Lease routes
 Route::get('/verhuringen/nieuw', [LeasesDashboardController::class, 'create'])->name('lease.create');

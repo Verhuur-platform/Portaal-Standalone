@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // View Composers
         view()->composer('*', AccountComposer::class);
+
+        if ($this->app->isLocal()) {
+            $this->app->register(TelescopeServiceProvider::class);
+        }
     }
 
     /**
