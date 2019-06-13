@@ -38,11 +38,9 @@ class NotesController extends Controller
         if ($filter === 'auteur') {
             $matchThese = [['notable_type', 'App\Models\Tenant'], ['notable_id', $tenant->id], ['author_id', auth()->user()->id]];
             $notes = Note::where($matchThese)->simplePaginate();
-        }
-
-        // Get all the notes that are attached to the tenant.
-        // We also paginate them to reduce the view size in the application.
-        else {
+        } else {
+            // Get all the notes that are attached to the tenant.
+            // We also paginate them to reduce the view size in the application.
             $notes = $tenant->notes()->simplePaginate();
         }
 

@@ -88,7 +88,7 @@ class DashboardController extends Controller
     public function update(TenantsValidator $input, Tenant $tenant): RedirectResponse
     {
         if ($tenant->update($input->all())) {
-            auth()->user('Huurders', "Heeft de informatie van {$tenant->full_name} aangepast in de applicatie.");
+            $this->getAuthenticatedUser()->logActivity('Huurders', "Heeft de informatie van {$tenant->full_name} aangepast in de applicatie.");
             $tenant->flashSuccess("De informatie van {$tenant->full_name} is aangepast!");
         }
 

@@ -49,7 +49,9 @@ class LockController extends Controller
     /**
      * Method for displaying the create view for the login lock.
      *
-     * @param  User $userEntity The storage entity from the user who needs to recieve the lock.
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     *
+     * @param User $userEntity The storage entity from the user who needs to recieve the lock.
      * @return Renderable
      */
     public function create(User $userEntity): Renderable
@@ -61,8 +63,10 @@ class LockController extends Controller
     /**
      * Method for storing the user lock in the application (portal).
      *
-     * @param  LockValidator $input The form request class that handles the validation.
-     * @param  User          $user  The database storage entity from the given user.
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     *
+     * @param LockValidator $input      The form request class that handles the validation.
+     * @param User          $userEntity The database storage entity from the given user.
      * @return RedirectResponse
      */
     public function store(LockValidator $input, User $userEntity): RedirectResponse
@@ -84,6 +88,8 @@ class LockController extends Controller
 
     /**
      * Method for remove a user lock in the application.
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      *
      * @param  User $userEntity The database storage entity from the given user.
      * @return RedirectResponse
