@@ -69,7 +69,7 @@ class Lease extends LeaseRepository
     }
 
     /**
-     * ATtributes to create the lease period.
+     * Attributes to create the lease period.
      *
      * @return string
      */

@@ -101,7 +101,7 @@
                         <i class="fe fe-user mr-1"></i> Huurders
                     </a>
 
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active('premises.*') }}" href="{{ route('premises.dashboard') }}">
                         <i class="fe fe-home mr-1"></i> Lokalen
                     </a> 
 
