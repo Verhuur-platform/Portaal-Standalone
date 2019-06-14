@@ -7,7 +7,7 @@
             <div class="page-subtitle">Overzicht</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn btn-secondary shadow-sm">
+                <a href="{{ route('premises.create') }}" class="btn btn-secondary shadow-sm">
                     <i class="fe fe-plus"></i>
                 </a>
 

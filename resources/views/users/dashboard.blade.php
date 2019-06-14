@@ -39,7 +39,7 @@
 
         <div class="card">
             <div class="table-responsive">
-                <table class="table mb-0 card-table table-vcenter text-nowrap">
+                <table class="table mb-0 card-table table-hover table-vcenter text-nowrap">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

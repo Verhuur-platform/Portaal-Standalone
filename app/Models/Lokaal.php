@@ -25,7 +25,7 @@ class Lokaal extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['naam', 'aantal_personen'];
 
     /**
      * Data relation for getting all the tickets from the premise.
@@ -44,7 +44,7 @@ class Lokaal extends Model
      */
     public function openTickets(): Builder
     {
-        return $this->whereHas('tickets', static function (Builder $query) {
+        return $this->whereHas('tickets', static function (Builder $query): void {
             $query->where('is_open', true);
         });
     }
@@ -56,7 +56,7 @@ class Lokaal extends Model
      */
     public function closedTickets(): HasMany
     {
-        return $this->whereHas('tickets', static function (Builder $query) {
+        return $this->whereHas('tickets', static function (Builder $query): void {
            $query->where('is_open', true);
         });
     }

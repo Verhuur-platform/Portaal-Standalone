@@ -69,6 +69,7 @@ Route::get('/gedeactiveerd', [LockController::class, 'index'])->name('user.deact
 
 // Premises routes
 Route::get('/lokalen', [PremisesController::class, 'index'])->name('premises.dashboard');
+Route::get('/lokalen/nieuw', [PremisesController::class, 'create'])->name('premises.create');
 
 // Lease routes
 Route::get('/verhuringen/nieuw', [LeasesDashboardController::class, 'create'])->name('lease.create');

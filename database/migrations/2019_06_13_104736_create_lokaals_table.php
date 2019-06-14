@@ -18,7 +18,13 @@ class CreateLokaalsTable extends Migration
     {
         Schema::create('lokalen', function (Blueprint $table): void {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('verantwoordelijke_id')->nullable();
+            $table->string('naam');
+            $table->string('aantal_personen')->nullable();
             $table->timestamps();
+
+            // Foreign key indexes
+            $table->foreign('verantwoordelijke_id')->references('id')->on('users')->ondelete('set null');
         });
     }
 

@@ -42,8 +42,6 @@ class DashboardController extends Controller
      */
     public function create(): Renderable
     {
-        // TODO: Create and implement routes
-        // TODO: Create view.
-        // TODO: Create controller
+        return view('premises.create');
     }
 }
